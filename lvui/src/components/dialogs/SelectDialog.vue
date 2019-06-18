@@ -1,6 +1,6 @@
 <template>
   <div class="lv-select-dialog" :class="positionClass">
-    <div class="lv-select-dialog-text">{{option.title}}</div>
+    <div class="lv-select-dialog-text" v-show="option.title && option.title.length>0">{{option.title}}</div>
     <div class="lv-select-dialog-item" @click="selected(item)" 
         v-for="item in option.items" :key="item.value">
         {{item.text}}

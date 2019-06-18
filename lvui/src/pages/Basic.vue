@@ -44,7 +44,7 @@ export default {
         showalertdialog(){
             this.cardsEventBus.$emit('showDialog', {
                 type:'alert', title:'alert', 
-                message:"附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间"
+                message:"hello"
             });
         }
     },
