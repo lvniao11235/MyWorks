@@ -8,16 +8,27 @@
         <NavItem :style="{width:itemWidth}" v-for="item in items" :key="item.id" :item="item">
         </NavItem>
     </div>
+    <div v-show="showDialog">
+        <MaskCard></MaskCard>
+        <Dialog :option="dialogOption"></Dialog>
+    </div>
   </div>
 </template>
 
 <script>
 import NavItem from './NavItem';
-
+import MaskCard from './MaskCard';
+import Dialog from '../dialogs/Dialog';
 export default {
   props:['items'],
+  data:function(){
+      return {
+          showDialog:false,
+          dialogOption:{}
+      }
+  },
   components: {
-      NavItem
+      NavItem, MaskCard, Dialog
   },
   computed:{
       itemWidth(){
@@ -27,11 +38,21 @@ export default {
   methods:{
       openOrSelectedCardHandle(item){
           this.$router.push(item.url);
+      },
+      showDialogHandle(option){
+          this.showDialog = true;
+          this.dialogOption = option;
+      },
+      hideDialogHandle(){
+          this.showDialog = false;
+          this.dialogOption = {};
       }
   },
   inject:['cardsEventBus'],
   created(){
       this.cardsEventBus.$on('openOrSelectedCard', this.openOrSelectedCardHandle);
+      this.cardsEventBus.$on('showDialog', this.showDialogHandle);
+      this.cardsEventBus.$on('hideDialog', this.hideDialogHandle);
   }
 }
 </script>
@@ -48,7 +69,7 @@ export default {
     .lv-cards-nav{
         width:100%;
         height:50px;
-        border-top:1px solid rgba(0, 0, 0, 0.33);
+        border-top:1px solid #c0bfc4;
         position:fixed;
         bottom:0px;
         z-index:10000;

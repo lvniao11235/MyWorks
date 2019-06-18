@@ -1,27 +1,11 @@
 <template>
   <div>
+    
     <Card ref="card" :cardClass="'lv-main-card'">
         <div>
-            <h1 @click="openNewPage">basic1</h1>
-            <h1>basic2</h1>
-            <h1>basic3</h1>
-            <h1>basic4</h1>
-            <h1>basic5</h1>
-            <h1>basic6</h1>
-            <h1>basic7</h1>
-            <h1>basic8</h1>
-            <h1>basic9</h1>
-            <h1>basic10</h1>
-            <h1>basic1</h1>
-            <h1>basic2</h1>
-            <h1>basic3</h1>
-            <h1>basic4</h1>
-            <h1>basic5</h1>
-            <h1>basic6</h1>
-            <h1>basic7</h1>
-            <h1>basic8</h1>
-            <h1>basic9</h1>
-            <h1>basic10</h1>
+            <Header :title="'lv-ui'"></Header>
+            <button @click="showdialog">{{language}}</button>
+            <button @click="showalertdialog">alert</button>
         </div>
     </Card>
   </div>
@@ -29,14 +13,39 @@
 
 <script>
 import Card from '../components/cards/Card';
+import Header from './Header';
 
 export default {
     components:{
-        Card
+        Card, Header
     },
+    data:function(){
+        return{
+            language:'中文'
+        }
+    },
+    inject:['cardsEventBus'],
     methods:{
         openNewPage(){
            this.$router.push('/detail'); 
+        },
+        showdialog(){
+            var _this = this;
+            this.cardsEventBus.$emit('showDialog', {
+                type:'select', title:'language', items:[
+                    {text:'english', value:'1'},
+                    {text:'中文', value:'2'}
+                ], callback:_this.changeLanguage
+            });
+        },
+        changeLanguage(language){
+            this.language = language.text;
+        },
+        showalertdialog(){
+            this.cardsEventBus.$emit('showDialog', {
+                type:'alert', title:'alert', 
+                message:"附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间附件打开拉萨附近打算离开房间"
+            });
         }
     },
     activated(){

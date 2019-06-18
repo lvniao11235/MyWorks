@@ -29,6 +29,7 @@ export default {
 *{
   padding:0px;
   margin:0px;
+  font-family:-apple-system-font,Helvetica Neue,sans-serif;
 }
 
 html, body, #app{
