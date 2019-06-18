@@ -1,11 +1,14 @@
 <template>
-  <div class="lv-mask-card">
+  <div class="lv-mask-card" @click="hide">
   </div>
 </template>
 
 <script>
 export default {
     methods:{
+        hide(){
+            this.cardsEventBus.$emit("hideDialog");
+        }
     },
     inject:['cardsEventBus'],
 }

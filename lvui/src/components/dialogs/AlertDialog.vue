@@ -21,7 +21,6 @@ export default {
 <style>
     .lv-alert-dialog{
         width:80%;
-        height:100px;
         position:absolute;
         top:0;
         right:0;

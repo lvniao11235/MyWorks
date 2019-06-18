@@ -35,7 +35,7 @@ export default {
                 type:'select', title:'language', items:[
                     {text:'english', value:'1'},
                     {text:'中文', value:'2'}
-                ], callback:_this.changeLanguage
+                ], position:'bottom', callback:_this.changeLanguage
             });
         },
         changeLanguage(language){
