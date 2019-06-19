@@ -9,26 +9,8 @@
         </div>
         <Carousel style="height:128px" :items="carousels"></Carousel>
         <div class="carousel-mask"></div>
-        <h1>1</h1>
-        <h1>2</h1>
-        <h1>3</h1>
-        <h1>4</h1>
-        <h1>5</h1>
-        <h1>1</h1>
-        <h1>2</h1>
-        <h1>3</h1>
-        <h1>4</h1>
-        <h1>5</h1>
-        <h1>1</h1>
-        <h1>2</h1>
-        <h1>3</h1>
-        <h1>4</h1>
-        <h1>5</h1>
-        <h1>1</h1>
-        <h1>2</h1>
-        <h1>3</h1>
-        <h1>4</h1>
-        <h1>5</h1>
+        <Category :items="categories"></Category>
+        <Banner></Banner>
     </Card>
   </div>
 </template>
@@ -36,15 +18,29 @@
 <script>
 import Card from '../components/cards/Card';
 import Carousel from '../components/widgets/Carousel';
+import Category from './Category';
+import Banner from './Banner';
 export default {
     components:{
-        Card, Carousel
+        Card, Carousel, Category, Banner
     },
     data:function(){
         return {
             carousels:[
                 'carousel/1.jpg', 'carousel/2.jpg', 'carousel/3.jpg',
                 'carousel/4.jpg', 'carousel/5.jpg', 'carousel/6.jpg'
+            ],
+            categories:[
+                {img:"/category/1.webp", text:"天猫"},
+                {img:"/category/2.png", text:"聚划算"},
+                {img:"/category/3.png", text:"天猫国际"},
+                {img:"/category/4.png", text:"外卖"},
+                {img:"/category/5.webp", text:"天猫超市"},
+                {img:"/category/6.webp", text:"充值中心"},
+                {img:"/category/7.png", text:"飞猪旅行"},
+                {img:"/category/8.png", text:"领金币"},
+                {img:"/category/9.png", text:"拍卖"},
+                {img:"/category/10.png", text:"分类"},
             ]
         }
     },
