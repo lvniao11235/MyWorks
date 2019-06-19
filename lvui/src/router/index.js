@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '../taobao/Home';
+import Cart from '../taobao/Cart';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -11,6 +12,8 @@ export default new VueRouter({
             path:'/', redirect:'/home'
         },{
             path:'/home', component:Home, meta:{ keepAlive:true}
+        },{
+            path:'/cart', component:Cart, meta:{ keepAlive:true}
         }
     ]
 })

@@ -11,6 +11,7 @@
         <div class="carousel-mask"></div>
         <Category :items="categories"></Category>
         <Banner></Banner>
+        <HotCategory></HotCategory>
     </Card>
   </div>
 </template>
@@ -20,9 +21,10 @@ import Card from '../components/cards/Card';
 import Carousel from '../components/widgets/Carousel';
 import Category from './Category';
 import Banner from './Banner';
+import HotCategory from './HotCategory';
 export default {
     components:{
-        Card, Carousel, Category, Banner
+        Card, Carousel, Category, Banner, HotCategory
     },
     data:function(){
         return {
