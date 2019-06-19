@@ -1,12 +1,16 @@
 <template>
-  <div class="lv-carousel" @mousemove="stopTimer" @mouseleave="startTimer">
+  <div class="lv-carousel">
     <div class="lv-carousel-item" v-for="(item, index) in items" 
-        :key="item" :class="{'lv-carousel-selected':index===currentIndex}">
-        <img :src="item"/>
+        :key="item" 
+        :class="{'lv-carousel-selected':index===currentIndex, 'left':index === oldIndex}" 
+        :ref="'item' + index">
+        <img :src="item" />
     </div>
     <div class="lv-carousel-indexs">
         <div class="lv-carousel-index" v-for="(item, index) in items" 
-            :key="item" :class="{'lv-carousel-selected':index===currentIndex}"></div>
+            :key="item" :class="{'lv-carousel-selected':index===currentIndex}"
+            @click="selected(index)" >
+        </div>
     </div>
     <div class="lv-carousel-left" @click="moveToLeft"></div>
     <div class="lv-carousel-right" @click="moveToRight"></div>
@@ -19,6 +23,7 @@ export default {
     data:function(){
         return {
             currentIndex:0,
+            oldIndex:this.items.length-1,
             timer:null
         }
     },
@@ -32,11 +37,12 @@ export default {
         startTimer(){
             var _this = this;
             this.timer = setInterval(function(){
-                _this.currentIndex = (_this.currentIndex+1) % _this.items.length;
+                _this.moveToRight();
             }, 5000);
         },
         moveToLeft(){
             this.stopTimer();
+            this.oldIndex = this.currentIndex;
             if(this.currentIndex == 0){
                 this.currentIndex = this.items.length-1;
             } else {
@@ -46,11 +52,14 @@ export default {
         },
         moveToRight(){
             this.stopTimer();
-            if(this.currentIndex == this.items.length-1){
-                this.currentIndex = 0;
-            } else {
-                this.currentIndex = this.currentIndex +1;
-            }
+            this.oldIndex = this.currentIndex;
+            this.currentIndex = (this.currentIndex+1) % this.items.length;
+            this.startTimer();
+        },
+        selected(index){
+            this.stopTimer();
+            this.oldIndex = this.currentIndex;
+            this.currentIndex = index;
             this.startTimer();
         }
     },
@@ -74,8 +83,9 @@ export default {
     top:0px;
 }
 
-.lv-carousel-selected{
-    z-index:1000;
+.lv-carousel-item.lv-carousel-selected{
+    z-index:1002;
+    animation: fromright 2s;
 }
 
 .lv-carousel-index{
@@ -94,7 +104,7 @@ export default {
 .lv-carousel-indexs{
     position:absolute;
     bottom:10px;
-    z-index:10001;
+    z-index:1003;
     text-align:center;
     width:100%;
 
@@ -106,7 +116,7 @@ export default {
     border-color:rgba(255,255,255,0.3);
     height:20px;
     width:20px;
-    z-index:10001;
+    z-index:1003;
     position:absolute;
     left:10px;
     top:50%;
@@ -120,11 +130,28 @@ export default {
     border-color:rgba(255,255,255,0.3);
     height:20px;
     width:20px;
-    z-index:10001;
+    z-index:1003;
     position:absolute;
     right:10px;
     top:50%;
     margin-top:-13px;
     transform:rotate(45deg);
+}
+
+@keyframes moveleft
+{
+    from {margin-left: 0px;}
+    to {margin-left: -100%;}
+}
+
+@keyframes fromright
+{
+    from {margin-left: 100%;}
+    to {margin-left: 0;}
+}
+
+.lv-carousel-item.left{
+    animation: moveleft 2s;
+    z-index:1001 !important;
 }
 </style>

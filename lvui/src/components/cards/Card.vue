@@ -28,6 +28,7 @@ export default {
         width:100%;
         overflow:scroll;
         position:absolute;
+        background-color:#fff;
     }
 
     .lv-main-card{
@@ -39,6 +40,6 @@ export default {
         position:absolute;
         top:0px;
         z-index:10001;
-        background-color:gray;
+        
     }
 </style>

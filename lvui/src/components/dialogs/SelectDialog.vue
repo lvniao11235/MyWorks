@@ -32,6 +32,7 @@ export default {
             
         }
     },
+    
     inject:['cardsEventBus'],
 }
 </script>

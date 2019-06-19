@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lv-home">
     <Card ref="card" :cardClass="'lv-main-card'">
         <div class="lv-home-head">
             <img src="taobao.svg" class="lv-home-head-icon"/>
@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style>
+    .lv-home{
+        background-color:#fff;
+    }
     .lv-home-head{
         width:100%;
         height:37px;
