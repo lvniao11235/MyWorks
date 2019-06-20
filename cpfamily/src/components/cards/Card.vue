@@ -42,4 +42,12 @@ export default {
         z-index:10001;
         
     }
+
+    .lv-content-card{
+        height:calc(100% - 80px);
+        
+        position:absolute;
+        top:80px;
+        z-index:10001;
+    }
 </style>
