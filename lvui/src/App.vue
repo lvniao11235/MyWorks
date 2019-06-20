@@ -18,7 +18,7 @@ export default {
       items:[
         {id:'1001', url:'/home', img:'home.svg', selectedimg:'template.png', text:'首页'},
         {id:'1002', url:'/cart', img:'cart.svg', selectedimg:'template.png', text:'购物车'},
-        {id:'1003', url:'/orders', img:'list.svg', selectedimg:'template.png', text:'订单列表'},
+        {id:'1003', url:'/order', img:'list.svg', selectedimg:'template.png', text:'订单列表'},
         {id:'1004', url:'/my', img:'user.svg', selectedimg:'template.png', text:'我的淘宝'},
         {id:'1005', url:'/more', img:'more.svg', selectedimg:'template.png', text:'更多'},
       ]
