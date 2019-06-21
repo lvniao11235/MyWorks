@@ -12,7 +12,8 @@ new Vue({
   store,
   provide:function(){
     return {
-      cardsEventBus: new Vue()
+      cardsEventBus: new Vue(),
+      cpfamilyEventBus: new Vue()
     }
   }
 }).$mount('#app')

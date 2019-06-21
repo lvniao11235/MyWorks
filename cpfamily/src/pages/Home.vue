@@ -4,28 +4,26 @@
         <div class="lv-home-head">泾彩党建</div>
         <div class="lv-news-types">
             <div class="lv-news-types-container"  :style="{'width':typesWidth}">
-                <router-link :to="type.url" v-for="type in selectedNewsTypes" :key="type.id"
+                <div v-for="type in selectedNewsTypes" :key="type.id"
                     :class="{'selected':type.id == currentNewsType.id}"
                     class="lv-news-type" >
                     <div @click="changeType(type)">
                         {{type.text}}
                     </div>
-                </router-link>
+                </div>
             </div>
         </div>
         <div class="lv-more-types" @click="changeTypes">
             <div class="fa fa-plus"></div>
         </div>
-        <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <News></News>
     </Card>
   </div>
 </template>
 
 <script>
 import Card from '../components/cards/Card';
+import News from './News';
 import {mapState, mapMutations} from 'vuex';
 export default {
     data:function(){
@@ -42,12 +40,13 @@ export default {
         })
     },
     components:{
-        Card
+        Card, News
     },
     methods:{
         ...mapMutations(['changeCurrentNewsType']),
         changeType(type){
             this.$store.commit('changeCurrentNewsType', type);
+            this.cpfamilyEventBus.$emit("changeNewsType", type);
         },
         changeTypes(){
             this.$router.push("/types");
@@ -59,6 +58,10 @@ export default {
     beforeRouteLeave(to, from, next){
         this.$refs.card.saveScrollPos();
         next();
+    },
+    inject:['cpfamilyEventBus'],
+    mounted(){
+        this.cpfamilyEventBus.$emit("changeNewsType", this.currentNewsType);
     }
 }
 </script>
@@ -119,5 +122,10 @@ export default {
         text-align:center;
     }
 
+    .lv-news{
+        width:100%;
+        height:calc(100% - 80px);
+        overflow:scroll;
+    }
     
 </style>

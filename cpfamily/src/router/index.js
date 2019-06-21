@@ -6,7 +6,7 @@ import Meet from '../pages/Meet';
 import Store from '../pages/Store';
 import My from '../pages/My';
 import Types from '../pages/Types';
-import News from '../pages/News';
+import PersonalCenter from '../pages/PersonalCenter';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -15,10 +15,7 @@ export default new VueRouter({
         {
             path:'/', redirect:'/home'
         },{
-            path:'/home', component:Home, meta:{ keepAlive:true},
-            children:[
-                {path:'type/:id', component:News, meta:{keepAlive:true}}
-            ]
+            path:'/home', component:Home, meta:{ keepAlive:true}
         },{
             path:'/meet', component:Meet, meta:{ keepAlive:true}
         },{
@@ -27,6 +24,8 @@ export default new VueRouter({
             path:'/my', component:My, meta:{ keepAlive:true}
         },{
             path:'/types', component:Types
+        },{
+            path:'/personal', component:PersonalCenter
         },
     ]
 })
