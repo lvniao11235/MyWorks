@@ -10,7 +10,7 @@
             <div class="lv-media-value">男</div>
         </div>
         <div class="lv-media-list-item-sepearator"></div>
-        <div class="lv-media-list-item">
+        <div class="lv-media-list-item" @click="changeBirthday">
             <div class="lv-media-text">出生日期</div> 
             <div class="lv-media-arrow fa fa-angle-right"></div> 
             <div class="lv-media-value">1993-01-18</div>
@@ -40,8 +40,14 @@ export default {
     methods:{
         back(){
             this.$router.back();
+        },
+        changeBirthday(){
+            this.cardsEventBus.$emit('showDialog', {
+                type:'timepicker'
+            });
         }
-    }
+    },
+    inject:['cardsEventBus'],
 }
 </script>
 

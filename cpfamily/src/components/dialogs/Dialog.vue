@@ -7,18 +7,19 @@
 <script>
 import SelectDialog from './SelectDialog';
 import AlertDialog from './AlertDialog';
+import TimePickerDialog from './TimePickerDialog';
 export default {
     props:['option'],
     components:{
-        SelectDialog, AlertDialog
+        SelectDialog, AlertDialog, TimePickerDialog
     },
     computed:{
         dialogType(){
-            if(this.option.type === "select"){
-                return SelectDialog;
-            } else if(this.option.type === "alert"){
-                return AlertDialog;
-            } 
+            switch(this.option.type){
+                case 'select': return SelectDialog;
+                case 'alert' : return AlertDialog;
+                case 'timepicker': return TimePickerDialog;
+            }
             return null;
         }
     }
