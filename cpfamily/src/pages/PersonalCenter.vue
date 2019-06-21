@@ -13,13 +13,13 @@
         <div class="lv-media-list-item" @click="changeBirthday">
             <div class="lv-media-text">出生日期</div> 
             <div class="lv-media-arrow fa fa-angle-right"></div> 
-            <div class="lv-media-value">1993-01-18</div>
+            <div class="lv-media-value">{{strBirth}}</div>
         </div>
         <div class="lv-media-list-item-sepearator"></div>
-        <div class="lv-media-list-item">
+        <div class="lv-media-list-item" @click="changePartyday">
             <div class="lv-media-text">入党日期</div> 
             <div class="lv-media-arrow fa fa-angle-right"></div> 
-            <div class="lv-media-value">2018-01-18</div>
+            <div class="lv-media-value">{{strParty}}</div>
         </div>
         <div class="lv-media-list-item-sepearator"></div>
         <div class="lv-media-list-item">
@@ -34,6 +34,20 @@
 <script>
 import Card from '../components/cards/Card';
 export default {
+    data:function(){
+        return {
+            birth: new Date(2019, 9, 1),
+            party: new Date(2018, 8, 1),
+        }
+    },
+    computed:{
+        strBirth(){
+            return (this.birth.getYear()+1900)+"-"+(this.birth.getMonth()+1)+"-"+this.birth.getDate();
+        },
+        strParty(){
+            return (this.party.getYear()+1900)+"-"+(this.party.getMonth()+1)+"-"+this.party.getDate();
+        }
+    },
     components:{
         Card
     },
@@ -43,8 +57,21 @@ export default {
         },
         changeBirthday(){
             this.cardsEventBus.$emit('showDialog', {
-                type:'timepicker'
+                type:'timepicker', currentDate:this.birth,
+                callback:this.changeBirthdayCallback
             });
+        },
+        changeBirthdayCallback(date){
+            this.birth = new Date(date);
+        },
+        changePartyday(){
+            this.cardsEventBus.$emit('showDialog', {
+                type:'timepicker', currentDate:this.party,
+                callback:this.changePartydayCallback
+            });
+        },
+        changePartydayCallback(date){
+            this.party = new Date(date);
         }
     },
     inject:['cardsEventBus'],
