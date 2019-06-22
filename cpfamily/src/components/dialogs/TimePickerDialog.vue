@@ -1,5 +1,21 @@
 <template>
     <div class="lv-timepicker-dialog">
+        <div class="lv-timepicker-time" v-show="type == 4">
+            <div class="lv-date-head">
+                <span @click="changeType(1)">{{year}}</span>年
+                <span @click="changeType(2)">{{month}}</span>月
+                <span @click="changeType(3)">{{date}}</span>月
+            </div>
+            <div class="lv-times">
+                <input type="text" v-model.number="hour" @input="limitHour" ref="hour"/>:
+                <input type="text" v-model.number="minute" @input="limitMinute" ref="minute"/>:
+                <input type="text" v-model.number="second" @input="limitSecond" ref="second"/>
+            </div>
+            <div class="lv-date-btns">
+                <div @click="ok">确定</div>
+                <div @click="reset">重置</div>
+            </div>
+        </div>
         <div class="lv-timepicker-date" v-show="type == 3">
             <div class="lv-date-head">
                 <div class="lv-date-left" @click="prevMonth"></div>
@@ -18,7 +34,6 @@
                     'lv-date-different-month':!isSameMonth(item),
                     'lv-date-current-date':isCurrentDate(item)}"
                     :alt="item.toString()"
-
                 @click="changeDate(item)">
                 {{item.getDate()}}
             </div>
@@ -65,7 +80,7 @@ export default {
             hour:0,
             minute:0,
             second:0,
-            type:3,     //1:year, 2:month, 3:day, 4:hour, 5:minute, 6:second
+            type:3,     //1:year, 2:month, 3:day, 4:time
             currentType:3,
             currentDate:new Date(),
             firstDate:0,
@@ -94,7 +109,7 @@ export default {
             this.hour = date.getHours();
             this.day = date.getDay();
             var temp = new Date(date.getYear()+1900, 
-                date.getMonth(), 1);
+                date.getMonth(), 1, this.hour, this.minute, this.second);
             temp.setDate((7-temp.getDay())-6);
             this.firstDate = new Date(temp);
             this.days = [];
@@ -131,6 +146,9 @@ export default {
         changeDate(date){
             this.currentDate = new Date(date);
             this.init(this.currentDate);
+            if(this.option.controlType == "datetime"){
+                this.type = 4;
+            }
         },
         prevMonth(){
             this.currentDate.setMonth(this.currentDate.getMonth()-1);
@@ -165,6 +183,27 @@ export default {
         ok(){
             this.option.callback(new Date(this.year, this.month-1, this.date));
             this.cardsEventBus.$emit("hideDialog");
+        },
+        limitHour(){
+            if(this.$refs.hour.value > 23){
+                this.hour = 23;
+            } else if(this.$refs.hour.value < 0){
+                this.hour = 0;
+            }
+        },
+        limitMinute(){
+            if(this.$refs.minute.value > 59){
+                this.minute = 59;
+            } else if(this.$refs.minute.value < 0){
+                this.minute = 0;
+            }
+        },
+        limitSecond(){
+            if(this.$refs.second.value > 59){
+                this.second = 23;
+            } else if(this.$refs.second.value < 0){
+                this.second = 0;
+            }
         }
     },
     inject:['cardsEventBus'],
@@ -319,5 +358,14 @@ export default {
         height:48px !important;
         line-height:48px !important;
         border:1px solid red !important;
+    }
+
+    .lv-times input{
+        width:40px;
+        display:inline-block;
+        margin:10px 2px;
+        outline:none;
+        border:1px solid #e2e2e2;
+        text-align:center;
     }
 </style>

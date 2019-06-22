@@ -7,6 +7,7 @@ import Store from '../pages/Store';
 import My from '../pages/My';
 import Types from '../pages/Types';
 import PersonalCenter from '../pages/PersonalCenter';
+import ArticleDetail from '../pages/ArticleDetail';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -26,6 +27,8 @@ export default new VueRouter({
             path:'/types', component:Types
         },{
             path:'/personal', component:PersonalCenter
-        },
+        },{
+            path:'/article/:id', component:ArticleDetail
+        }
     ]
 })

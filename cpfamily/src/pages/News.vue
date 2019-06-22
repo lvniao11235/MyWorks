@@ -4,7 +4,7 @@
         <div class="lv-news-item-media">
             <img src="/media.png"/>
         </div>
-        <div class="lv-news-item-content">
+        <div class="lv-news-item-content" @click="openArticleDetail">
             <div class="lv-news-item-title">
             习近平在省部级主要领导干部学习贯彻十六届六种全会
             </div>
@@ -124,23 +124,39 @@
         <div class="lv-news-item-sign">
             立即报名
         </div>
+    </div>
+    <div class="lv-news-item-width-media"
+        v-for="item in articles" :key="item">
+        {{item}}
     </div>
     <div class="lv-home-btns">
         <div class="lv-move-to-top fa fa-arrow-up" @click="scrollToTop"></div>
-        <div class="lv-loaddata fa fa-download"></div>
+        <div class="lv-loaddata fa fa-download" @click="loadMoreArticles"></div>
     </div>
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
     data:function(){
         return {
-            type:{}
+            type:{},
+            articles:[]
+            
         }
     },
     methods:{
+        openArticleDetail(){
+            this.$router.push("/article/1");
+        },
         reload(){
+            
+        },
+        loadMoreArticles(){
+            this.$http.get("http://localhost:13168/home/data").then(function(res){
+            }, function(err){
+            });
         },
         changeNewsTypeHandle(type){
             this.type = type;
@@ -149,7 +165,7 @@ export default {
         scrollToTop(){
             var _this = this;
             var timer = setInterval(function(){
-                var scrollPos = _this.$refs.newsContainer.scrollTop - 50;
+                var scrollPos = _this.$refs.newsContainer.scrollTop - 300;
                 if(scrollPos < 0){
                     scrollPos = 0;
                 }

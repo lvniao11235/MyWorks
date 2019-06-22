@@ -57,7 +57,8 @@ export default {
         },
         changeBirthday(){
             this.cardsEventBus.$emit('showDialog', {
-                type:'timepicker', currentDate:this.birth,
+                type:'timepicker', currentDate:new Date(),
+                controlType:'datetime',
                 callback:this.changeBirthdayCallback
             });
         },
