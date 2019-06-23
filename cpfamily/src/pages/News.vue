@@ -137,7 +137,6 @@
 </template>
 
 <script>
-import Axios from "axios";
 export default {
     data:function(){
         return {
@@ -154,8 +153,8 @@ export default {
             
         },
         loadMoreArticles(){
-            this.$http.get("http://localhost:13168/home/data").then(function(res){
-            }, function(err){
+            this.$http.get("http://localhost:13168/home/data").then(function(){
+            }, function(){
             });
         },
         changeNewsTypeHandle(type){

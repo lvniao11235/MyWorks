@@ -8,6 +8,7 @@ import My from '../pages/My';
 import Types from '../pages/Types';
 import PersonalCenter from '../pages/PersonalCenter';
 import ArticleDetail from '../pages/ArticleDetail';
+import MeetDetail from '../pages/MeetDetail';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -29,6 +30,8 @@ export default new VueRouter({
             path:'/personal', component:PersonalCenter
         },{
             path:'/article/:id', component:ArticleDetail
+        },{
+            path:'/meetroom', component:MeetDetail
         }
     ]
 })
