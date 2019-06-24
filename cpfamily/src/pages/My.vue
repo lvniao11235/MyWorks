@@ -1,43 +1,61 @@
 <template>
   <div class="lv-my">
     <Card ref="card" :cardClass="'lv-main-card'">
-        <div class="lv-my-head">个人中心</div>
-        <div class="lv-my-infos">
-            <div class="lv-my-img">
+        <div v-show="currentUesr == null">
+            <div class="lv-my-head">泾彩党建</div>
+            <img class="lv-unregister-img" src="register.png"/>
+            <div class="lv-unregister-tip">您尚未注册！点击注册吧</div>
+            <div class="lv-unregister-btn" @click="register">注册</div>
+        </div>
+        <div v-show="currentUser != null">
+            <div class="lv-my-head">个人中心</div>
+            <div class="lv-my-infos">
+                <div class="lv-my-img">
+                </div>
+                <div class="lv-my-info">
+                    <div class="lv-my-name">pengy</div>
+                    <div class="lv-my-point">1000</div>
+                </div>
+                <div class="lv-my-sign">
+                    已签到
+                </div>
             </div>
-            <div class="lv-my-info">
-                <div class="lv-my-name">pengy</div>
-                <div class="lv-my-point">1000</div>
+            <div class="lv-my-sepearator"></div>
+            <div class="lv-media-list-item" @click="openPersonalCenter">
+                <div class="lv-media-icon fa fa-address-card"></div>
+                <div class="lv-media-text">个人信息</div> 
+                <div class="lv-media-arrow fa fa-angle-right"></div> 
             </div>
-            <div class="lv-my-sign">
-                已签到
+            <div class="lv-media-list-item-sepearator"></div>
+            <div class="lv-media-list-item">
+                <div class="lv-media-icon fa fa-users"></div>
+                <div class="lv-media-text">参与的会议</div> 
+                <div class="lv-media-arrow fa fa-angle-right"></div> 
             </div>
         </div>
-        <div class="lv-my-sepearator"></div>
-        <div class="lv-media-list-item" @click="openPersonalCenter">
-            <div class="lv-media-icon fa fa-address-card"></div>
-            <div class="lv-media-text">个人信息</div> 
-            <div class="lv-media-arrow fa fa-angle-right"></div> 
-        </div>
-        <div class="lv-media-list-item-sepearator"></div>
-        <div class="lv-media-list-item">
-            <div class="lv-media-icon fa fa-users"></div>
-            <div class="lv-media-text">参与的会议</div> 
-            <div class="lv-media-arrow fa fa-angle-right"></div> 
-        </div>
+        
     </Card>
   </div>
 </template>
 
 <script>
 import Card from '../components/cards/Card';
+import {mapState} from 'vuex';
 export default {
     components:{
         Card
     },
+    computed:{
+        ...mapState({
+            currentUser: state=>state.config.currentUser,
+        }),
+    },
     methods:{
         openPersonalCenter(){
             this.$router.push("/personal");
+        },
+        register(){
+            this.$router.push("/register");
         }
     },
     activated(){
@@ -164,5 +182,35 @@ export default {
     width:100%;
     height:0px;
     border-bottom:1px solid #d3d3d3;
+}
+
+.lv-unregister-img{
+    width:127px;
+    height:106px;
+    display:block;
+    margin:89px auto;
+    margin-bottom:0px;
+}
+
+.lv-unregister-tip{
+    text-align:center;
+    font-size:17px;
+    color:#333333;
+    height:56px;
+    line-height:56px;
+    vertical-align:middle;
+    margin-top:30px;
+}
+
+.lv-unregister-btn{
+    width:60%;
+    height:50px;
+    line-height:49px;
+    vertical-align:middle;
+    text-align:center;
+    color:#fff;
+    background-color:#db3445;
+    margin:30px auto;
+    border-radius:25px;
 }
 </style>

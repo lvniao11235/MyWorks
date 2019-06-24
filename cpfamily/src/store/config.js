@@ -4,7 +4,8 @@ export default{
         newsType:[],
         selectedNewsTypes:[],
         unselected:[],
-        currentNewsType: {id:'1', text:'全部'}
+        currentNewsType: {id:'1', text:'全部'},
+        currentUser:null
     },
     mutations:{
         changeCurrentNewsType(currentState, type){

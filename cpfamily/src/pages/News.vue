@@ -45,6 +45,7 @@ export default {
             this.$http.post("http://10.0.0.2/home/getmessages", 
                 {type:this.type.id}).then(function(resp){
                     this.articles = JSON.parse(resp.bodyText);
+                    
                 });
         },
         loadMoreArticles(){
