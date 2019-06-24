@@ -37,13 +37,13 @@ export default {
         ...mapState({
             selectedNewsTypes: state=>state.config.selectedNewsTypes,
             currentNewsType: state=>state.config.currentNewsType
-        })
+        }),
     },
     components:{
         Card, News
     },
     methods:{
-        ...mapMutations(['changeCurrentNewsType']),
+        ...mapMutations(['changeCurrentNewsType', 'changeSelectedNewsTypes']),
         changeType(type){
             this.$store.commit('changeCurrentNewsType', type);
             this.cpfamilyEventBus.$emit("changeNewsType", type);
@@ -62,6 +62,9 @@ export default {
     inject:['cpfamilyEventBus'],
     mounted(){
         this.cpfamilyEventBus.$emit("changeNewsType", this.currentNewsType);
+        this.$http.get("http://10.0.0.2/home/getselectedtypes/1").then(function(resp){
+             this.$store.commit('changeSelectedNewsTypes', resp.body);
+        });
     }
 }
 </script>

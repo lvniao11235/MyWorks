@@ -5,10 +5,10 @@
         <div class="lv-selected-news">
           <div class="lv-news-type-modify-text">
             <span>我的频道，点击进入频道</span>
-            <div>编辑</div>
+            <div @click="modifyTypes">{{stateButtonText}}</div>
           </div>
           <div class="lv-news-type-modify"
-            v-for="type in newsTypes" :key="type.id"
+            v-for="type in selectedNewsTypes" :key="type.id" @click="removeTypes(type)"
             :class="{'selected':type.id == currentNewsType.id, 'fixed':type.fixed}">
               {{type.text}}
           </div>
@@ -18,7 +18,7 @@
             <span>更多频道，点击添加频道</span>
           </div>
           <div class="lv-news-type-modify"
-            v-for="type in newsTypes" :key="type.id">
+            v-for="type in unselected" :key="type.id" @click="addTypes(type)">
               {{type.text}}
           </div>
         </div>
@@ -28,8 +28,13 @@
 
 <script>
 import Card from '../components/cards/Card';
-import {mapState} from 'vuex';
+import {mapState, mapMutations, mapGetters} from 'vuex';
 export default {
+    data:function(){
+      return {
+        state: 0,   //0:未编辑，1：编辑
+      }
+    },
     components:{
         Card
     },
@@ -37,11 +42,45 @@ export default {
       ...mapState({
         selectedNewsTypes: state=>state.config.selectedNewsTypes,
         newsTypes: state=>state.config.newsType,
-        currentNewsType: state=>state.config.currentNewsType
-      })
-      
+        currentNewsType: state=>state.config.currentNewsType,
+        unselected:state=>state.config.unselected,
+        addSelectedNewsTypes:state=>state.config.addSelectedNewsTypes,
+        removeSelectedNewsTypes:state=>state.config.removeSelectedNewsTypes,
+        addunselected:state=>state.config.addunselected,
+        removeunselected:state=>state.config.removeunselected
+      }),
+      stateButtonText(){
+        return this.state == 0 ? "编辑":"完成";
+      }
     },
     methods:{
+      ...mapMutations(['changeNewsType']),
+      ...mapGetters(['getUnselectedNewsType']),
+      modifyTypes(){
+        if(this.state == 0){
+          this.state = 1;
+        } else {
+          this.state = 0;
+          this.$http.post("http://10.0.0.2/home/SelectedTypeByUser", {userid:"abc", types:[1,2,3]});
+        }
+      },
+      addTypes(type){
+        if(this.state == 1){
+          this.$store.commit('removeunselected', type);
+          this.$store.commit('addSelectedNewsTypes', type);
+        }
+      },
+      removeTypes(type){
+        if(this.state == 1){
+          this.$store.commit('removeSelectedNewsTypes', type);
+          this.$store.commit('addunselected', type);
+        }
+      }
+    },
+    mounted(){
+        this.$http.get("http://10.0.0.2/home/getalltypes").then(function(resp){
+             this.$store.commit('changeNewsType', resp.body);
+        });
     }
 }
 </script>

@@ -1,133 +1,24 @@
 <template>
   <div class="lv-news" ref="newsContainer">
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content" @click="openArticleDetail">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
+    <div v-for="(article, index) in articles" :key="article.Id">
+        <div class="lv-news-item-width-media">
+            <div class="lv-news-item-media">
+                <img :src="article.Image"/>
             </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
+            <div class="lv-news-item-content" @click="openArticleDetail">
+                <div class="lv-news-item-title">
+                {{article.Title}}
+                </div>
+                <div class="lv-news-item-info">
+                    <div>{{article.Location}}</div>
+                    <div>{{article.Time}}</div>
+                </div>
             </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
+            <div class="lv-news-item-sign">
+                立即报名
             </div>
         </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
-            </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
-            </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
-            </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
-            </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-seperator"></div>
-    <div class="lv-news-item-width-media">
-        <div class="lv-news-item-media">
-            <img src="/media.png"/>
-        </div>
-        <div class="lv-news-item-content">
-            <div class="lv-news-item-title">
-            习近平在省部级主要领导干部学习贯彻十六届六种全会
-            </div>
-            <div class="lv-news-item-info">
-                <div>西安</div>
-                <div>2019-06-12 16:07</div>
-            </div>
-        </div>
-        <div class="lv-news-item-sign">
-            立即报名
-        </div>
-    </div>
-    <div class="lv-news-item-width-media"
-        v-for="item in articles" :key="item">
-        {{item}}
+        <div class="lv-news-item-seperator" v-show="index < articles.length-1"></div>
     </div>
     <div class="lv-home-btns">
         <div class="lv-move-to-top fa fa-arrow-up" @click="scrollToTop"></div>
@@ -141,8 +32,9 @@ export default {
     data:function(){
         return {
             type:{},
-            articles:[]
-            
+            articles:null,
+            start:null,
+            end:null,
         }
     },
     methods:{
@@ -150,16 +42,24 @@ export default {
             this.$router.push("/article/1");
         },
         reload(){
-            
+            this.$http.post("http://10.0.0.2/home/getmessages", 
+                {type:this.type.id}).then(function(resp){
+                    this.articles = JSON.parse(resp.bodyText);
+                });
         },
         loadMoreArticles(){
-            this.$http.get("http://localhost:13168/home/data").then(function(){
-            }, function(){
-            });
+            this.$http.post("http://10.0.0.2/home/getmessages", 
+                {type:this.type.id, startTime:new Date(), endTime:new Date()}).then(function(resp){
+                    var temp = JSON.parse(resp.bodyText);
+                    temp.forEach(x=>this.article.push(x));
+                });
         },
         changeNewsTypeHandle(type){
-            this.type = type;
-            this.reload();
+            if(type.id != this.type.id){
+                this.type = type;
+                this.start = null;
+                this.end = null;
+            }
         },
         scrollToTop(){
             var _this = this;
@@ -173,12 +73,14 @@ export default {
                     clearInterval(timer);
                 }
             }, 100);
-            
         }
     },
     inject:['cpfamilyEventBus'],
     created(){
         this.cpfamilyEventBus.$on("changeNewsType", this.changeNewsTypeHandle);
+    },
+    mounted(){
+        this.reload();
     }
 }
 </script>
