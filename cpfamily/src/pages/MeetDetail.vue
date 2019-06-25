@@ -23,7 +23,9 @@
         <div class="lv-meet-content">
         </div>
         <div class="lv-meet-submit">提交</div>
-        <div id="calendar"></div>
+        <div class="lv-calendar">
+            <div id="calendar"></div>
+        </div>
     </Card>
   </div>
 </template>
@@ -129,5 +131,10 @@ export default {
     border-radius:22.5px;
     color:#fff;
     margin:12px auto;
+}
+
+.lv-calendar{
+    width:100%;
+    overflow:scroll;
 }
 </style>
