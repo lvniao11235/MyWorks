@@ -75,7 +75,7 @@ var JSCalendarEvent = function () {
             var h = Math.floor(d / 60);
             var m = d % 60;
 
-            return append + (h ? h + "h " : "") + (m ? m + "mins" : "") + prepend;
+            return append + (h ? h + this.options.timeUnitVocab.h : "") + (m ? m + this.options.timeUnitVocab.mins : "") + prepend;
         }
     }, {
         key: "formatTime",
@@ -88,9 +88,9 @@ var JSCalendarEvent = function () {
             if (this.options.ampm) {
                 if (h > 11) {
                     h -= h == 12 ? 0 : 12;
-                    append = " PM";
+                    append = this.options.ampmVocab.pm;
                 } else {
-                    append = " AM";
+                    append = this.options.ampmVocab.am;
                 }
             }
 
@@ -619,10 +619,10 @@ var JSCalendar = function () {
                     minutesBlock.style.height = this.options.dayviewGapHeight - 1 + "px";
                     if (this.options.ampm) {
                         if (h < 12) {
-                            appendee = "AM";
+                            appendee = this.options.ampmVocab.am.trim();
                         } else {
                             dh -= dh == 12 ? 0 : 12;
-                            appendee = "PM";
+                            appendee = this.options.ampmVocab.pm.trim();
                         }
                     }
                     timespan.textContent = dh + ":" + (mins < 10 ? "0" : "") + mins + appendee;
@@ -1254,6 +1254,14 @@ var JSCalendar = function () {
                     week: "Week",
                     month: "Month"
                 },
+                timeUnitVocab:{
+                    h:"h ",
+                    mins:"mins "
+                },
+                ampmVocab:{
+                    am:" am",
+                    pm:" pm"
+                },
                 buttons: ["previous", "today", "next"],
                 buttonsActions: {
                     previous: "goBack",
@@ -1289,7 +1297,7 @@ var JSCalendar = function () {
                 alwaysFetch: false,
                 fetchReplaces: false,
                 height: 700,
-                width: 1024
+                width: "100%"
             };
         }
     }]);
@@ -1299,6 +1307,6 @@ var JSCalendar = function () {
 
 JSCalendar.hooks = {};
 
-(function () {
-    module.exports = { JSCalendar: JSCalendar, JSCalendarEvent: JSCalendarEvent };
-})(JSCalendar, JSCalendarEvent);
+export {
+    JSCalendar, JSCalendarEvent
+}

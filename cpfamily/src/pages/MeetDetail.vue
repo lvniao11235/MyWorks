@@ -22,7 +22,7 @@
         </div>
         <div class="lv-meet-content">
         </div>
-        <div class="lv-meet-submit">提交</div>
+        <div class="lv-meet-submit" @click="pushMeet">提交</div>
         <div class="lv-calendar">
             <div id="calendar"></div>
         </div>
@@ -32,14 +32,15 @@
 
 <script>
 import Card from '../components/cards/Card';
-import 'vanilla-js-calendar/dist/js-calendar.css';
-import * as LibName from "vanilla-js-calendar";
+import '../calendar/js-calendar.css';
+import {JSCalendar} from '../calendar/js-calendar.js';
 //https://www.npmjs.com/package/vanilla-js-calendar
 export default {
     data:function(){
         return {
             start: new Date(),
             party: new Date(2018, 8, 1),
+            calendar:null,
         }
     },
     computed:{
@@ -57,6 +58,22 @@ export default {
     methods:{
         back(){
             this.$router.back();
+        },
+        pushMeet(){
+            var date = new Date();
+            var data2 = new Date();
+            data2.setHours(data2.getHours() + 1);
+            var data = { 
+                at : date,
+                event:{
+                    at : date, 
+                    displayname : "hello", 
+                    duration : 1.5 * 60 * 60 * 1000,  
+                    color : "red"
+                }
+            };
+            this.calendar.push(data);
+            this.calendar.goNow();
         },
         changeStart(){
             this.cardsEventBus.$emit('showDialog', {
@@ -81,14 +98,32 @@ export default {
     inject:['cardsEventBus'],
     mounted(){
         var elem = document.getElementById("calendar");
-        var JSCalendar = LibName.JSCalendar;
-        var JSCalendarEvent = LibName.JSCalendarEvent;
-        var calendar = new JSCalendar(elem, { /* options */ }).init().render();
+        this.calendar = new JSCalendar(elem, {
+            monthsVocab:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十一月"],
+            daysVocab:["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+            viewsVocab:{day : "天", week : "周", month : "月" },
+            buttonsVocab:{previous : "<", today : "今天", next : ">"},
+            timeUnitVocab:{h:"时", mins:"分"},
+            emptyDayVocab:"无数据",
+            width:"100%",
+            ampmVocab:{am:"上午", pm:"下午"},
+            nthVocab: { 1: "日", 2: "日", 3: "日", default: "日" },
+            eventBackground:"#db3445"
+        }).init().render();
+        this.calendar.goNow();
+    },
+    destroyed(){
+        this.calendar.destroy();
     }
 }
 </script>
 
 <style>
+
+.lv-bookmeet .lv-fullpage-card{
+    background-color:#fff;
+}
+
 .lv-media-list-item{
     background-color:#fff;
 }
