@@ -1,5 +1,5 @@
 <template>
-  <div class="lv-nav-item" :class="{'selected':selected}" @click="openOrSelectedCard">
+  <div class="lv-nav-item" :class="{'selected':isSelected}" @click="openOrSelectedCard">
     <div class="lv-nav-item-img">
         <div :class="item.img"></div>
     </div>
@@ -15,6 +15,11 @@ export default {
   data:function(){
     return {
       selected:false
+    }
+  },
+  computed:{
+    isSelected(){
+      return this.$route.fullPath == this.item.url;
     }
   },
   inject:['cardsEventBus'],
@@ -46,7 +51,7 @@ export default {
     }
 
     .lv-nav-item.selected{
-      color:#de2910;
+      color:#db3445;
     }
 
     .lv-nav-item .lv-nav-item-img div{

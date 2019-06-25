@@ -8,10 +8,11 @@
 import SelectDialog from './SelectDialog';
 import AlertDialog from './AlertDialog';
 import TimePickerDialog from './TimePickerDialog';
+import LoadDialog from './LoadDialog';
 export default {
     props:['option'],
     components:{
-        SelectDialog, AlertDialog, TimePickerDialog
+        SelectDialog, AlertDialog, TimePickerDialog,LoadDialog
     },
     computed:{
         dialogType(){
@@ -19,6 +20,7 @@ export default {
                 case 'select': return SelectDialog;
                 case 'alert' : return AlertDialog;
                 case 'timepicker': return TimePickerDialog;
+                case 'load' : return LoadDialog;
             }
             return null;
         }

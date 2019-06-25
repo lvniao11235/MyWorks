@@ -5,16 +5,16 @@
             <div class="lv-news-item-media">
                 <img :src="article.Image"/>
             </div>
-            <div class="lv-news-item-content" @click="openArticleDetail">
+            <div class="lv-news-item-content" @click="openArticleDetail(article.Id)">
                 <div class="lv-news-item-title">
                 {{article.Title}}
                 </div>
                 <div class="lv-news-item-info">
                     <div>{{article.Location}}</div>
-                    <div>{{article.Time}}</div>
+                    <div>{{article.CreateTime}}</div>
                 </div>
             </div>
-            <div class="lv-news-item-sign">
+            <div class="lv-news-item-sign" v-show="article.IsRegister" @click="register(article.Id)">
                 立即报名
             </div>
         </div>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
     data:function(){
         return {
@@ -37,22 +38,44 @@ export default {
             end:null,
         }
     },
+    computed:{
+        ...mapState({
+            BaseUrl:state=>state.config.BaseUrl,
+        }),
+    },
     methods:{
-        openArticleDetail(){
-            this.$router.push("/article/1");
+        register(id){
+            this.cardsEventBus.$emit('showDialog', {type:'load'});
+            this.$http.post(this.BaseUrl + "/home/registration", 
+                {openId:1, id:id}).then(function(resp){
+                    this.cardsEventBus.$emit('hideDialog');
+                    var res = JSON.parse(resp.bodyText);
+                    if(res == 1){
+                        this.cardsEventBus.$emit('showDialog', {type:"alert",title:"活动报名", message:"报名成功"});
+                    } else if(res == 0){
+                        this.cardsEventBus.$emit('showDialog', {type:"alert",title:"活动报名", message:"报名失败"});
+                    }
+                });
+        },
+        openArticleDetail(id){
+            this.$router.push("/article/" + id);
         },
         reload(){
-            this.$http.post("http://10.0.0.2/home/getmessages", 
-                {type:this.type.id}).then(function(resp){
+            this.articles = [];
+            this.cardsEventBus.$emit('showDialog', {type:'load'});
+            this.$http.post(this.BaseUrl + "/home/getmessages", 
+                {type:this.type.id, articleid:1}).then(function(resp){
                     this.articles = JSON.parse(resp.bodyText);
-                    
+                    this.cardsEventBus.$emit('hideDialog');
                 });
         },
         loadMoreArticles(){
-            this.$http.post("http://10.0.0.2/home/getmessages", 
-                {type:this.type.id, startTime:new Date(), endTime:new Date()}).then(function(resp){
+            this.cardsEventBus.$emit('showDialog', {type:'load'});
+            this.$http.post(this.BaseUrl + "/home/getmessages", 
+                {type:this.type.id, articleid:this.articles.length}).then(function(resp){
                     var temp = JSON.parse(resp.bodyText);
-                    temp.forEach(x=>this.article.push(x));
+                    temp.forEach(x=>this.articles.push(x));
+                    this.cardsEventBus.$emit('hideDialog');
                 });
         },
         changeNewsTypeHandle(type){
@@ -60,6 +83,7 @@ export default {
                 this.type = type;
                 this.start = null;
                 this.end = null;
+                this.reload();
             }
         },
         scrollToTop(){
@@ -76,7 +100,7 @@ export default {
             }, 100);
         }
     },
-    inject:['cpfamilyEventBus'],
+    inject:['cpfamilyEventBus', 'cardsEventBus'],
     created(){
         this.cpfamilyEventBus.$on("changeNewsType", this.changeNewsTypeHandle);
     },

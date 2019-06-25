@@ -6,34 +6,34 @@
             </div>
             <div class="lv-article-container">
                 <div class="lv-article-media">
-                    <img src="/1.jpg"/>
+                    <img :src="article.Image"/>
                 </div>
                 <div class="lv-article-title">
-                习近平出席全国两会少数民族代表委员茶话会习近平出席全国两会少数民族代表委员茶话会
+                {{article.Title}}
                 </div>
                 <div class="lv-article-data">
-                浏览<span>605</span>收藏<span>20</span>
+                浏览<span>{{article.BrowseNumber}}</span>收藏<span>{{article.CollectionNumber}}</span>
                 </div>
                 <div class="lv-article-info">
                     <div class="lv-article-time">
-                        <div class="fa fa-clock-o"></div>2019-06-12 16:07
+                        <div class="fa fa-clock-o"></div>{{article.CreateTime}}
                     </div>
                     <div class="lv-article-phone">
-                        <div class="fa fa-mobile"></div>15151891845
+                        <div class="fa fa-mobile"></div>{{article.ContactNumber}}
                     </div>
                     <div class="lv-article-address">
-                        <div class="fa fa-map-marker"></div>西安
+                        <div class="fa fa-map-marker"></div>{{article.Location}}
                     </div>
                     <div class="lv-article-author">
-                        <div class="fa fa-user"></div>王军
+                        <div class="fa fa-user"></div>{{article.ContactorName}}
                     </div>
                 </div>
                 <div class="lv-separator"></div>
                 <div style="font-size:16px;color:#3a3a3a;">详情</div>
                 <div class="lv-article-content">
-                此次展览由中央编译局、北京市委宣传部和北京市西城区委共同主办，集中展示了建党95年来马克思主义中国化的历史进程及主要成果。刘奇葆仔细观看展示马克思主义中国化的珍贵文献、手稿、文物、图片，以及马克思主义题材的绘画、雕塑等，详细了解相关文献的具体情况，与在场的有关部门负责同志进行交流。刘奇葆指出，展览主题鲜明、内容丰富、思想性强，带给人们深刻的启迪和思考。在建党95周年之际，举办这个主题展览具有非常重要的意义。
+                    {{article.Content}}
                 </div>
-                <div class="lv-article-sign">立即报名</div>
+                <div class="lv-article-sign" v-show="article.IsRegister" @click="register(article.Id)">立即报名</div>
             </div>
         </Card>
     </div>
@@ -41,14 +41,48 @@
 
 <script>
 import Card from '../components/cards/Card';
+import {mapState} from 'vuex';
 export default {
+    data:function(){
+        return {
+            article:{}
+        }
+    },
     components:{
         Card
+    },
+    computed:{
+        ...mapState({
+            BaseUrl:state=>state.config.BaseUrl,
+        }),
     },
     methods:{
         back(){
             this.$router.back();
-        }
+        },
+        register(id){
+            this.cardsEventBus.$emit('showDialog', {type:'load'});
+            this.$http.post(this.BaseUrl + "/home/registration", 
+                {openId:1, id:id}).then(function(resp){
+                    this.cardsEventBus.$emit('hideDialog');
+                    var res = JSON.parse(resp.bodyText);
+                    if(res == 1){
+                        this.cardsEventBus.$emit('showDialog', {type:"alert",title:"活动报名", message:"报名成功"});
+                    } else if(res == 0){
+                        this.cardsEventBus.$emit('showDialog', {type:"alert",title:"活动报名", message:"报名失败"});
+                    }
+                });
+        },
+    },
+    inject:['cardsEventBus'],
+    mounted(){
+        var articleid = this.$route.params.id;
+        this.cardsEventBus.$emit('showDialog', {type:'load'});
+        this.$http.post(this.BaseUrl + "/home/detail", 
+            {id:articleid}).then(function(resp){
+                this.article = JSON.parse(resp.bodyText);
+                this.cardsEventBus.$emit('hideDialog');
+            });
     }
 }
 </script>

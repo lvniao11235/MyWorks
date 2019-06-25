@@ -43,4 +43,10 @@ html, body, #app{
   height:100%;
   overflow:hidden;
 }
+
+.lv-seperator{
+  width:100%;
+  height:0px;
+  border-bottom:1px solid #d3d3d3;
+}
 </style>

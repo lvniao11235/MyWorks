@@ -1,20 +1,21 @@
 <template>
   <div class="lv-my">
     <Card ref="card" :cardClass="'lv-main-card'">
-        <div v-show="currentUesr == null">
+        <div v-show="showRegister">
             <div class="lv-my-head">泾彩党建</div>
             <img class="lv-unregister-img" src="register.png"/>
             <div class="lv-unregister-tip">您尚未注册！点击注册吧</div>
             <div class="lv-unregister-btn" @click="register">注册</div>
         </div>
-        <div v-show="currentUser != null">
+        <div v-show="!showRegister">
             <div class="lv-my-head">个人中心</div>
             <div class="lv-my-infos">
                 <div class="lv-my-img">
+                    <img style="width:62px;height:62px;border-radius:31px" :src="img"/>
                 </div>
                 <div class="lv-my-info">
-                    <div class="lv-my-name">pengy</div>
-                    <div class="lv-my-point">1000</div>
+                    <div class="lv-my-name">{{Name}}</div>
+                    <div class="lv-my-point">{{Score}}</div>
                 </div>
                 <div class="lv-my-sign">
                     已签到
@@ -40,7 +41,7 @@
 
 <script>
 import Card from '../components/cards/Card';
-import {mapState} from 'vuex';
+import {mapState, mapMutations} from 'vuex';
 export default {
     components:{
         Card
@@ -48,9 +49,23 @@ export default {
     computed:{
         ...mapState({
             currentUser: state=>state.config.currentUser,
+            BaseUrl:state=>state.config.BaseUrl,
         }),
+        showRegister(){
+            return this.currentUser == null;
+        },
+        Name(){
+            return this.currentUser != null ? this.currentUser.Name:"unknown";
+        },
+        Score(){
+            return this.currentUser != null ? this.currentUser.Score:0;
+        },
+        img(){
+            return this.currentUser != null ? this.currentUser.HeadImgURL:"unknown";
+        }
     },
     methods:{
+        ...mapMutations(['changeCurrentUser']),
         openPersonalCenter(){
             this.$router.push("/personal");
         },
@@ -64,6 +79,20 @@ export default {
     beforeRouteLeave(to, from, next){
         this.$refs.card.saveScrollPos();
         next();
+    },
+    inject:['cardsEventBus'],
+    mounted(){
+        this.cardsEventBus.$emit('showDialog', {type:'load'});
+        this.$http.post(this.BaseUrl + "/user/getuser", 
+            {id:1}).then(function(resp){
+                this.cardsEventBus.$emit('hideDialog');
+                var res = JSON.parse(resp.bodyText);
+                if(res == null){
+                    this.$store.commit('changeCurrentUser', null);
+                } else {
+                    this.$store.commit('changeCurrentUser', res);
+                }
+            });
     }
 }
 </script>

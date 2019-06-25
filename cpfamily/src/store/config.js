@@ -1,5 +1,6 @@
 export default{
     state:{
+        BaseUrl:"http://10.0.0.2",
         WeiChatID:"",
         newsType:[],
         selectedNewsTypes:[],
@@ -8,6 +9,9 @@ export default{
         currentUser:null
     },
     mutations:{
+        changeCurrentUser(currentState, type){
+            currentState.currentUser = type;
+        },
         changeCurrentNewsType(currentState, type){
             currentState.currentNewsType = type;
         },

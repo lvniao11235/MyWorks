@@ -36,7 +36,8 @@ export default {
         },
         ...mapState({
             selectedNewsTypes: state=>state.config.selectedNewsTypes,
-            currentNewsType: state=>state.config.currentNewsType
+            currentNewsType: state=>state.config.currentNewsType,
+            BaseUrl:state=>state.config.BaseUrl,
         }),
     },
     components:{
@@ -62,7 +63,7 @@ export default {
     inject:['cpfamilyEventBus'],
     mounted(){
         this.cpfamilyEventBus.$emit("changeNewsType", this.currentNewsType);
-        this.$http.get("http://10.0.0.2/home/getselectedtypes/1").then(function(resp){
+        this.$http.get(this.BaseUrl + "/home/getselectedtypes/1").then(function(resp){
              this.$store.commit('changeSelectedNewsTypes', resp.body);
         });
     }
@@ -73,7 +74,7 @@ export default {
     .lv-home-head{
         height:50px;
         width:100%;
-        background-color:#de2910;
+        background-color:#db3445;
         line-height:50px;
         vertical-align:middle;
         font-size:25px;

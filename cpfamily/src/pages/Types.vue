@@ -47,7 +47,8 @@ export default {
         addSelectedNewsTypes:state=>state.config.addSelectedNewsTypes,
         removeSelectedNewsTypes:state=>state.config.removeSelectedNewsTypes,
         addunselected:state=>state.config.addunselected,
-        removeunselected:state=>state.config.removeunselected
+        removeunselected:state=>state.config.removeunselected,
+        BaseUrl:state=>state.config.BaseUrl,
       }),
       stateButtonText(){
         return this.state == 0 ? "编辑":"完成";
@@ -61,7 +62,7 @@ export default {
           this.state = 1;
         } else {
           this.state = 0;
-          this.$http.post("http://10.0.0.2/home/SelectedTypeByUser", {userid:"abc", types:[1,2,3]});
+          this.$http.post(this.BaseUrl + "/home/SelectedTypeByUser", {userid:"abc", types:[1,2,3]});
         }
       },
       addTypes(type){
@@ -71,14 +72,14 @@ export default {
         }
       },
       removeTypes(type){
-        if(this.state == 1){
+        if(this.state == 1 && type.id != this.currentNewsType.id){
           this.$store.commit('removeSelectedNewsTypes', type);
           this.$store.commit('addunselected', type);
         }
       }
     },
     mounted(){
-        this.$http.get("http://10.0.0.2/home/getalltypes").then(function(resp){
+        this.$http.get(this.BaseUrl + "/home/getalltypes").then(function(resp){
              this.$store.commit('changeNewsType', resp.body);
         });
     }
