@@ -28,9 +28,9 @@
                 <div class="lv-media-arrow fa fa-angle-right"></div> 
             </div>
             <div class="lv-media-list-item-sepearator"></div>
-            <div class="lv-media-list-item">
+            <div class="lv-media-list-item" @click="openMyEvent">
                 <div class="lv-media-icon fa fa-users"></div>
-                <div class="lv-media-text">参与的会议</div> 
+                <div class="lv-media-text">参与的活动</div> 
                 <div class="lv-media-arrow fa fa-angle-right"></div> 
             </div>
         </div>
@@ -71,6 +71,9 @@ export default {
         },
         register(){
             this.$router.push("/register");
+        },
+        openMyEvent(){
+            this.$router.push("/myevents");
         }
     },
     activated(){

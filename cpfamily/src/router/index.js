@@ -10,6 +10,7 @@ import PersonalCenter from '../pages/PersonalCenter';
 import ArticleDetail from '../pages/ArticleDetail';
 import MeetDetail from '../pages/MeetDetail';
 import Register from '../pages/Register';
+import MyEvents from '../pages/MyEvents';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -35,6 +36,8 @@ export default new VueRouter({
             path:'/meetroom', component:MeetDetail
         },{
             path:'/register', component:Register
+        },{
+            path:'/myevents', component:MyEvents
         }
     ]
 })

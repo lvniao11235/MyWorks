@@ -337,7 +337,7 @@ export default {
 
     .lv-date-current-month{
         border-radius:15px;
-        width:calc(20% - 2px) !important;
+        width:calc(25% - 2px) !important;
         height:48px !important;
         line-height:48px !important;
         border:1px solid red !important;

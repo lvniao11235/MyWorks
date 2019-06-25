@@ -23,12 +23,16 @@
         <div class="lv-meet-content">
         </div>
         <div class="lv-meet-submit">提交</div>
+        <div id="calendar"></div>
     </Card>
   </div>
 </template>
 
 <script>
 import Card from '../components/cards/Card';
+import 'vanilla-js-calendar/dist/js-calendar.css';
+import * as LibName from "vanilla-js-calendar";
+//https://www.npmjs.com/package/vanilla-js-calendar
 export default {
     data:function(){
         return {
@@ -73,6 +77,12 @@ export default {
         }
     },
     inject:['cardsEventBus'],
+    mounted(){
+        var elem = document.getElementById("calendar");
+        var JSCalendar = LibName.JSCalendar;
+        var JSCalendarEvent = LibName.JSCalendarEvent;
+        var calendar = new JSCalendar(elem, { /* options */ }).init().render();
+    }
 }
 </script>
 
