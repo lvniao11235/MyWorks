@@ -107,7 +107,7 @@ export default {
             this.loadCalendarData(calendar, "next");
         },
         loadCalendarData(calendar, type){
-
+            calendar.ttype = type;
         }
     },
     inject:['cardsEventBus'],

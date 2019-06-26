@@ -13,9 +13,11 @@
                 </div>
             </div>
         </div>
+        
         <div class="lv-more-types" @click="changeTypes">
             <div class="fa fa-plus"></div>
         </div>
+        <div style="clear:both">{{location}}</div>
         <News></News>
     </Card>
   </div>
@@ -39,6 +41,9 @@ export default {
             currentNewsType: state=>state.config.currentNewsType,
             BaseUrl:state=>state.config.BaseUrl,
         }),
+        location(){
+            return window.location.href;
+        }
     },
     components:{
         Card, News

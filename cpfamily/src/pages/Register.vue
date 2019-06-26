@@ -109,7 +109,7 @@ export default {
             this.cardsEventBus.$emit('showDialog', {
                 type:'timepicker', 
                 currentDate:this.birth,
-                controlType:"date",
+                controlType:"datetime",
                 callback:this.selectBirthCallback});
         },
         selectBirthCallback(date){

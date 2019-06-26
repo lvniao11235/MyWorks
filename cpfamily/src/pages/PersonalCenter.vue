@@ -109,7 +109,7 @@ export default {
         selectBirth(){
             if(this.modifyState){
                 this.cardsEventBus.$emit('showDialog', {
-                    type:'timepicker', currentDate:moment(this.currentUser.BirthDay, 'YYYY-MM-DD HH:mm:ss').valueOf(),
+                    type:'timepicker', controlType:"datetime",currentDate:moment(this.currentUser.BirthDay, 'YYYY-MM-DD HH:mm:ss').valueOf(),
                     callback:this.changeBirthdayCallback
                 });
             }
@@ -120,7 +120,7 @@ export default {
         selectParty(){
             if(this.modifyState){
                 this.cardsEventBus.$emit('showDialog', {
-                    type:'timepicker', currentDate:moment(this.currentUser.JoinCPDay, 'YYYY-MM-DD HH:mm:ss').valueOf(),
+                    type:'timepicker', controlType:"datetime",currentDate:moment(this.currentUser.JoinCPDay, 'YYYY-MM-DD HH:mm:ss').valueOf(),
                     callback:this.changePartydayCallback
                 });
             }

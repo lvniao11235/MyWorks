@@ -189,6 +189,8 @@ export default {
                 this.hour = 23;
             } else if(this.$refs.hour.value < 0){
                 this.hour = 0;
+            } else if(this.$refs.hour.value.toString().length == 0) {
+                this.hour = 0;
             }
         },
         limitMinute(){
@@ -196,12 +198,16 @@ export default {
                 this.minute = 59;
             } else if(this.$refs.minute.value < 0){
                 this.minute = 0;
+            } else if(this.$refs.minute.value.toString().length == 0) {
+                this.minute = 0;
             }
         },
         limitSecond(){
             if(this.$refs.second.value > 59){
                 this.second = 23;
             } else if(this.$refs.second.value < 0){
+                this.second = 0;
+            } else if(this.$refs.second.value.toString().length == 0) {
                 this.second = 0;
             }
         }

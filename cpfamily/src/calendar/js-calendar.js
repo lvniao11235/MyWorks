@@ -9,7 +9,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _jscallog = function _jscallog(msg) {
-    console.log("[JSCalendar - " + new Date().toLocaleTimeString() + "] " + msg);
+    msg = {};
+    msg.data = "1";
+    //console.log("[JSCalendar - " + new Date().toLocaleTimeString() + "] " + msg);
 };
 
 var _jsCalWrapper = {
@@ -700,7 +702,7 @@ var JSCalendar = function () {
             var dayrow = _a("tr", "cal-week-day-row", this.table);
             var daycol = _a("td", "cal-week-day-col", dayrow);
 
-            var month = JSCalendar.getDaysInMonth(this.state.year, this.state.month);
+            //var month = JSCalendar.getDaysInMonth(this.state.year, this.state.month);
             var dayObj = new Date(this.state.year, this.state.month, this.state.day);
             var firstDay = new Date(dayObj.getTime() - dayObj.getDay() * daystamp);
             var lastDay = new Date(firstDay.getTime() + 6 * daystamp);
@@ -711,7 +713,7 @@ var JSCalendar = function () {
             _jscallog("Rending matrix week");
             var cDay = new Date(firstDay.getTime());
 
-            var _loop2 = function _loop2(i) {
+            var _loop2 = function _loop2() {
                 var y = cDay.getFullYear();
                 var m = cDay.getMonth();
                 var d = cDay.getDate();
@@ -792,10 +794,10 @@ var JSCalendar = function () {
                     var date = new Date(_this7.state.year, _this7.state.month, ++startAt);
 
                     var td = _a('td', 'jscal-col row' + row + "col" + col, tr);
-                    var inMonth = true;
+                    //var inMonth = true;
                     var daySpan = _a('span', 'cell-number', td);
                     if (startAt <= 0 || startAt > totalDays) {
-                        var _inMonth = false;
+                        //var _inMonth = false;
                         td.classList.add("notinmonth");
                         daySpan.textContent = date.getDate();
                     } else {
