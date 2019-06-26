@@ -69,7 +69,7 @@ export default {
                     at : date, 
                     displayname : "hello", 
                     duration : 1.5 * 60 * 60 * 1000,  
-                    color : "red"
+                    color : "#d3d3d3"
                 }
             };
             this.calendar.push(data);
@@ -93,13 +93,28 @@ export default {
         },
         changePartydayCallback(date){
             this.party = new Date(date);
+        },
+        calendarViewChangeHandler(calendar){
+            this.loadCalendarData(calendar, calendar.state.view);
+        },
+        calendarBackHandler(calendar){
+            this.loadCalendarData(calendar, "back");
+        },
+        calendarTodayHandler(calendar){
+            this.loadCalendarData(calendar, "today");
+        },
+        calendarNextHandler(calendar){
+            this.loadCalendarData(calendar, "next");
+        },
+        loadCalendarData(calendar, type){
+
         }
     },
     inject:['cardsEventBus'],
     mounted(){
         var elem = document.getElementById("calendar");
         this.calendar = new JSCalendar(elem, {
-            monthsVocab:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十一月"],
+            monthsVocab:["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
             daysVocab:["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
             viewsVocab:{day : "天", week : "周", month : "月" },
             buttonsVocab:{previous : "<", today : "今天", next : ">"},
@@ -108,8 +123,12 @@ export default {
             width:"100%",
             ampmVocab:{am:"上午", pm:"下午"},
             nthVocab: { 1: "日", 2: "日", 3: "日", default: "日" },
-            eventBackground:"#db3445"
+            eventBackground:"#d3d3d3"
         }).init().render();
+        this.calendar.on("viewChanged", this.calendarViewChangeHandler);
+        this.calendar.on("back", this.calendarBackHandler);
+        this.calendar.on("today", this.calendarTodayHandler);
+        this.calendar.on("next", this.calendarNextHandler);
         this.calendar.goNow();
     },
     destroyed(){

@@ -352,7 +352,7 @@ var JSCalendar = function () {
             this.state.day = now.getDate();
             this.state.weekday = now.getDay();
             this.adjustDateToView();
-
+            this.fire("today");
             return this.render();
         }
     }, {
@@ -392,7 +392,7 @@ var JSCalendar = function () {
                     this.state.day = _monthStat.numberOfDays + this.state.day;
                 }
             }
-
+            this.fire("back");
             return this.render();
         }
     }, {
@@ -430,7 +430,7 @@ var JSCalendar = function () {
                     this.state.day = this.state.day - _monthStat2.numberOfDays;
                 }
             }
-
+            this.fire("next");
             return this.render();
         }
     }, {
@@ -443,6 +443,7 @@ var JSCalendar = function () {
             this.state.month = date.getMonth();
             this.state.day = date.getDate();
             this.setView("day");
+            this.fire("today");
         }
     }, {
         key: "push",
