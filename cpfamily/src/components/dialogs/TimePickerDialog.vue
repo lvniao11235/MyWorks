@@ -181,7 +181,12 @@ export default {
             this.createYears(this.tempYear);
         },
         ok(){
-            this.option.callback(new Date(this.year, this.month-1, this.date));
+            if(this.option.controlType == "datetime"){
+                this.option.callback(new Date(this.year, this.month-1, 
+                    this.date, this.hour, this.minute, this.second));
+            } else {
+                this.option.callback(new Date(this.year, this.month-1, this.date));
+            }
             this.cardsEventBus.$emit("hideDialog");
         },
         limitHour(){
