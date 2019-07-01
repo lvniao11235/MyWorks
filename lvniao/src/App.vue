@@ -102,6 +102,14 @@ html, body, #app{
   width:100%;
 }
 
+.lv-page{
+  position:relative;
+  background-color:#fff;
+  width:calc(100% - 10px);
+  height:calc(100% - 10px);
+  padding:5px;
+}
+
 .lv-separator{
   width:100%;
   height:0px;

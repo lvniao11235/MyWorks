@@ -4,7 +4,6 @@ import store from './store'
 import "font-awesome/css/font-awesome.min.css"
 import router from './router'
 Vue.config.productionTip = false
-
 new Vue({
   render: h => h(App),
   store,
