@@ -58,10 +58,27 @@ ColumnCollection.parse = function(columns){
     return res;
 }
 
+const ModelWrapper = function(data){
+    this.checked = false;
+    this.data = data;
+}
+
+const ModelWrapperCollection = function(){
+    this.modelCollection = [];
+}
+
+ModelWrapperCollection.parse = function(data){
+    var res = new ModelWrapperCollection();
+    for(var d in data){
+        res.modelCollection.push(new ModelWrapper(data[d]));
+    }
+    return res;
+}
+
 const defaultOptions = {
-    
+    hasIndex:true
 }
 
 export{
-    ColumnModel, ColumnCollection, defaultOptions
+    ColumnModel, ColumnCollection, defaultOptions, ModelWrapperCollection
 }

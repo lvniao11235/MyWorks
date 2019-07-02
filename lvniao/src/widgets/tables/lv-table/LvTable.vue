@@ -3,13 +3,13 @@
         <table  cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
+                    <th v-if="hasIndex" style="padding:5px" :rowspan="columnCollection.hasManyRows ? 2:1"></th>
                     <template v-for="column in columnCollection.columnModels">
                         <th v-if="column.isChecked"
                             :rowspan="column.children.length == 0 && columnCollection.hasManyRows ? 2:1"
                             :colspan="column.children.length == 0 ? 1:column.children.length"
-                            :style="{width:column.children.length == 0 ? columnsWidth:'auto'}"
                             :key="column.text">
-                            <input type="checkbox"/>
+                            <input type="checkbox" v-model="bSelectAll" ref="selectall" @click.stop="selectAll"/>
                         </th>
                         <th v-if="!column.isChecked && column.show"
                             :rowspan="column.children.length == 0 && columnCollection.hasManyRows ? 2:1"
@@ -31,11 +31,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="d in data" :key="d.id">
+                <tr v-for="(item, index) in modelWrapperCollection.modelCollection" :key="item.data.id">
+                    <td v-if="hasIndex">{{index+1}}</td>
                     <template v-for="column in columnCollection.mapColumns">
-                        <td v-if="column.isChecked" :key="column.name"><input type="checkbox"/></td>
+                        <td v-if="column.isChecked" :key="column.name"><input type="checkbox" v-model="item.checked"/></td>
                         <td v-if="!column.isChecked && column.isOperation" :key="column.name" v-html="column.format()"></td>
-                        <td v-if="!column.isChecked && !column.isOperation && column.show" :key="column.name">{{d[column.name]}}</td>
+                        <td v-if="!column.isChecked && !column.isOperation && column.show" :key="column.name">
+                            <template v-if="column.controlType == 'text'">{{item.data[column.name]}}</template>
+                            <template v-else>
+                                <ColumnControl :controlType="column.controltype" :value="item.data[column.name]"></ColumnControl>
+                            </template>
+                        </td>
                     </template>
                 </tr>
             </tbody>
@@ -44,9 +50,13 @@
 </template>
 
 <script>
-import {ColumnCollection} from './options';
+import {ColumnCollection, ModelWrapperCollection} from './options';
+import ColumnControl from './ColumnControl';
 export default{
     name:'my-table',
+    components:{
+        ColumnControl
+    },
     data:function(){
         return {
             columns:[
@@ -55,7 +65,7 @@ export default{
                 {name:"name", text:"姓名"},
                 {text:"个人信息", children:[
                     {name:"age", text:"年龄"},
-                    {name:"gender", text:"性别"},
+                    {name:"gender", text:"性别", controlType:"radio"},
                 ]},
                 {text:"联系方式", children:[
                     {name:"email", text:"邮箱"},
@@ -76,7 +86,7 @@ export default{
                     id:1,
                     name:"张三",
                     age:21,
-                    gender:"男",
+                    gender:true,
                     email:"zhangsan@163.com",
                     phonenumber:"87651234",
                     postcode:"738299",
@@ -85,10 +95,34 @@ export default{
                     city:"西安",
                     county:"雁塔区",
                 }, {
-                    id:1,
+                    id:2,
                     name:"李四",
                     age:22,
-                    gender:"女",
+                    gender:false,
+                    email:"lisi@162.com",
+                    phonenumber:"32457281",
+                    postcode:"728433",
+                    state:"离职",
+                    province:"陕西",
+                    city:"渭南",
+                    county:"临渭区",
+                }, {
+                    id:3,
+                    name:"张三",
+                    age:21,
+                    gender:true,
+                    email:"zhangsan@163.com",
+                    phonenumber:"87651234",
+                    postcode:"738299",
+                    state:"在职",
+                    province:"陕西",
+                    city:"西安",
+                    county:"雁塔区",
+                }, {
+                    id:4,
+                    name:"李四",
+                    age:22,
+                    gender:false,
                     email:"lisi@162.com",
                     phonenumber:"32457281",
                     postcode:"728433",
@@ -100,18 +134,21 @@ export default{
             ],
             columnsWidth:"",
             columnCollection:new ColumnCollection(),
+            hasIndex:true,
+            modelWrapperCollection:new ModelWrapperCollection(),
+            bSelectAll:false
+        }
+    },
+    methods:{
+        selectAll(){
+            for(var i in this.modelWrapperCollection.modelCollection){
+                this.modelWrapperCollection.modelCollection[i].checked = this.$refs.selectall[0].checked;
+            }
         }
     },
     mounted(){
         this.columnCollection = ColumnCollection.parse(this.columns);
-        for(var i; i<this.columns.length; i++){
-            if(this.columns[i].columns){
-                this.columns += this.columns[i].columns.length;
-            } else {
-                this.columns += 1;
-            }
-        }
-        this.columnsWidth = "calc(100%/" + this.columns + ")";
+        this.modelWrapperCollection = ModelWrapperCollection.parse(this.data);
     }
 }
 </script>
@@ -156,6 +193,7 @@ export default{
     font-size:14px;
     word-wrap:break-word;
     word-break:break-all;
+    color:#333;
 }
 
 </style>
