@@ -1,15 +1,15 @@
 <template>
-    <div class="lv-widget lv-table-page">
-        <Table></Table>
+    <div class="lv-widget lv-table-page lv-page-container">
+        <LvTable></LvTable>
     </div>
 </template>
 
 <script>
-import Table from '../widgets/tables/Table';
+import {LvTable} from '../widgets/tables/lv-table';
 
 export default{
     components:{
-        Table
+        LvTable
     }
 }
 </script>

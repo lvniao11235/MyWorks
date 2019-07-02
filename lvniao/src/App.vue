@@ -116,4 +116,7 @@ html, body, #app{
   border-bottom:1px solid #d5d5d6;
 }
 
+.lv-page-container{
+  overflow:scroll;
+}
 </style>

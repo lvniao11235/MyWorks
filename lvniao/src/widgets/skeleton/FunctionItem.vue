@@ -18,7 +18,7 @@ export default{
     },
     mounted(){
         this.$nextTick(function(){
-            this.marginLeft =  (this.$refs.panel.parentElement.clientWidth - 280 - 5) + "px";
+            this.marginLeft =  (this.$refs.panel.parentElement.clientWidth - 187 - 5) + "px";
         });
     },
 }
@@ -29,7 +29,7 @@ export default{
 .lv-function-item-panel{
     display:none;
     position:relative;
-    width:280px;
+    width:187px;
     z-index:10000;
 }
 
