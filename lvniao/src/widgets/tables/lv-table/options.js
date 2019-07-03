@@ -9,6 +9,8 @@ const ColumnModel = function(){
     this.children = [];
     this.isChecked = false;
     this.isOperation = false;
+    this.sort = 0;  //0:无序, 1:升序, -1:降序
+    this.sortable = false;
 }
 
 ColumnModel.extend = function(column){
@@ -60,6 +62,7 @@ ColumnCollection.parse = function(columns){
 
 const ModelWrapper = function(data){
     this.checked = false;
+    this.selected = false;
     this.data = data;
 }
 

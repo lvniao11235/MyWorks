@@ -24,6 +24,11 @@
                         <template v-for="child in column.children">
                             <th :key="child.text">
                                 {{child.text}}
+                                <span v-if="child.sortable"
+                                    class="lv-table-sort">
+                                    <span class="fa fa-caret-up" click.stop="sort(column, true)"></span>
+                                    <span class="fa fa-caret-down" click.stop="sort(column, false)"></span>
+                                </span>
                             </th>
                         </template>
                         
@@ -31,7 +36,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, index) in modelWrapperCollection.modelCollection" :key="item.data.id">
+                <tr v-for="(item, index) in modelWrapperCollection.modelCollection" 
+                    :key="item.data.id" @click.stop="selectRow(item)"
+                    :class="{'lv-selected':item.selected}">
                     <td v-if="hasIndex">{{index+1}}</td>
                     <template v-for="column in columnCollection.mapColumns">
                         <td v-if="column.isChecked" :key="column.name"><input type="checkbox" v-model="item.checked"/></td>
@@ -39,12 +46,15 @@
                         <td v-if="!column.isChecked && !column.isOperation && column.show" :key="column.name">
                             <template v-if="column.controlType == 'text'">{{item.data[column.name]}}</template>
                             <template v-else>
-                                <ColumnControl :controlType="column.controltype" :value="item.data[column.name]"></ColumnControl>
+                                <ColumnControl :controlType="column.controlType" :value="item.data[column.name]"></ColumnControl>
                             </template>
                         </td>
                     </template>
                 </tr>
             </tbody>
+            <tfoot>
+
+            </tfoot>
         </table>
     </div>
 </template>
@@ -64,8 +74,8 @@ export default{
                 {name:"id", show:false},
                 {name:"name", text:"姓名"},
                 {text:"个人信息", children:[
-                    {name:"age", text:"年龄"},
-                    {name:"gender", text:"性别", controlType:"radio"},
+                    {name:"age", text:"年龄", controlType:"progress", sortable:true},
+                    {name:"gender", text:"性别", controlType:"checkbox"},
                 ]},
                 {text:"联系方式", children:[
                     {name:"email", text:"邮箱"},
@@ -84,7 +94,7 @@ export default{
             ],
             data:[{
                     id:1,
-                    name:"张三",
+                    name:"张三1",
                     age:21,
                     gender:true,
                     email:"zhangsan@163.com",
@@ -96,8 +106,8 @@ export default{
                     county:"雁塔区",
                 }, {
                     id:2,
-                    name:"李四",
-                    age:22,
+                    name:"李四2",
+                    age:30,
                     gender:false,
                     email:"lisi@162.com",
                     phonenumber:"32457281",
@@ -108,8 +118,8 @@ export default{
                     county:"临渭区",
                 }, {
                     id:3,
-                    name:"张三",
-                    age:21,
+                    name:"张三3",
+                    age:40,
                     gender:true,
                     email:"zhangsan@163.com",
                     phonenumber:"87651234",
@@ -120,8 +130,8 @@ export default{
                     county:"雁塔区",
                 }, {
                     id:4,
-                    name:"李四",
-                    age:22,
+                    name:"李四4",
+                    age:52,
                     gender:false,
                     email:"lisi@162.com",
                     phonenumber:"32457281",
@@ -144,6 +154,13 @@ export default{
             for(var i in this.modelWrapperCollection.modelCollection){
                 this.modelWrapperCollection.modelCollection[i].checked = this.$refs.selectall[0].checked;
             }
+        },
+        selectRow(item){
+            this.modelWrapperCollection.modelCollection.forEach(x=>x.selected = false);
+            item.selected = true;
+        },
+        sort(column, flag){
+
         }
     },
     mounted(){
@@ -195,5 +212,23 @@ export default{
     word-break:break-all;
     color:#333;
 }
+.lv-table-widget table tbody tr:hover,
+.lv-table-widget table tbody tr.lv-selected{
+    background-color:#dee2e6;
+}
 
+.lv-table-sort span{
+    float:right;
+    height:20px;
+    margin-top:9px;
+    margin-right:5px;
+}
+
+.lv-table-sort .fa-caret-up{
+
+}
+.lv-table-sort .fa-caret-down{
+    margin-top:20px;
+    margin-right:-8px;
+}
 </style>
