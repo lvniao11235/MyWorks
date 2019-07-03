@@ -1,5 +1,5 @@
 <template>
-    <div class="lv-widget">
+    <div class="">
     </div>
 </template>
 

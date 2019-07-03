@@ -26,8 +26,8 @@
                                 {{child.text}}
                                 <span v-if="child.sortable"
                                     class="lv-table-sort">
-                                    <span class="fa fa-caret-up" click.stop="sort(column, true)"></span>
-                                    <span class="fa fa-caret-down" click.stop="sort(column, false)"></span>
+                                    <span class="fa fa-caret-up" @click.stop="sort(column, true)"></span>
+                                    <span class="fa fa-caret-down" @click.stop="sort(column, false)"></span>
                                 </span>
                             </th>
                         </template>
@@ -160,7 +160,12 @@ export default{
             item.selected = true;
         },
         sort(column, flag){
-
+            this.modelWrapperCollection.modelCollection.sort(function(e1, e2){
+                return e1.data[column.name] - e2.data[column.name];
+            });
+            if(!flag){
+                this.modelWrapperCollection.modelCollection.reverse();
+            }
         }
     },
     mounted(){
@@ -194,6 +199,7 @@ export default{
     line-height:38px;
     vertical-align:middle;
     color:#666;
+    position:relative;
 }
 .lv-table-widget table tbody tr{
     background-color:#fff;
@@ -211,24 +217,25 @@ export default{
     word-wrap:break-word;
     word-break:break-all;
     color:#333;
+    
 }
 .lv-table-widget table tbody tr:hover,
 .lv-table-widget table tbody tr.lv-selected{
     background-color:#dee2e6;
 }
 
+.lv-table-sort{
+    position:absolute;
+    right:0px;
+}
 .lv-table-sort span{
-    float:right;
     height:20px;
-    margin-top:9px;
-    margin-right:5px;
+    display:block !important;
 }
 
 .lv-table-sort .fa-caret-up{
 
 }
 .lv-table-sort .fa-caret-down{
-    margin-top:20px;
-    margin-right:-8px;
 }
 </style>
