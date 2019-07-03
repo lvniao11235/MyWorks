@@ -14,11 +14,19 @@ export default{
     },
     methods:{
         change(){
-            this.$emit("changed", this.$refs.radio.checked);
+            if(this.$refs.radio.checked){
+                this.$emit("changed", this.value);
+            }
+            
         }
     },
     created(){
         this.model = this.checked;
+    },
+    watch:{
+        checked(checked){
+            this.model = checked;
+        }
     }
 }
 </script>

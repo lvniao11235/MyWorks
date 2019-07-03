@@ -29,6 +29,11 @@ export default{
     },
     created(){
         this.value = this.checked;
+    },
+    watch:{
+        checked(checked){
+            this.value = checked;
+        }
     }
 }
 </script>
