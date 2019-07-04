@@ -1,6 +1,7 @@
 <template>
     <span class="lv-form-radio-group">
         <LvRadio v-for="item in items" :key="item.value"
+            :disable="item.disable"
             :checked="value" :value="item.value" :label="item.label"
             @click.stop="select(item)" @changed="change">
         </LvRadio>

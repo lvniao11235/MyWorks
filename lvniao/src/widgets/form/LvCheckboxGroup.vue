@@ -1,6 +1,7 @@
 <template>
-    <span class="lv-form-checkbox-group">
+    <span class="lv-form-checkbox-group ">
         <LvCheckbox v-for="item in items" :key="item.value"
+            :disable="item.disable"
             :checked="value.indexOf(item.value) != -1" :value="item.value" :label="item.label"
             @click.stop="select(item)" @changed="change">
         </LvCheckbox>
@@ -45,4 +46,24 @@ export default{
 </script>
 
 <style>
+
+.lv-form-border .lv-form-checkbox,
+.lv-form-border .lv-form-radio{
+    border:1px solid;
+    border-left:none;
+}
+
+.lv-form-border .lv-form-checkbox:first-child,
+.lv-form-border .lv-form-radio:first-child{
+    border-left:1px solid;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+
+.lv-form-border .lv-form-checkbox:last-child,
+.lv-form-border .lv-form-radio:last-child{
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
 </style>
