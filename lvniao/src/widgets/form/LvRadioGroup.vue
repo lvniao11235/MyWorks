@@ -25,6 +25,7 @@ export default{
         },
         change(value){
             this.value = value;
+            this.$emit("changed", this.value);
         }
     },
     created(){
