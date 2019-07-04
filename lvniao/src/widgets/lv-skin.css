@@ -9,6 +9,10 @@
   background-color:#3c8dbc;
 }
 
+.lv-skin-blue .lv-skin-form-primary{
+  color:#3c8dbc;
+}
+
 .lv-skin-blue .lv-skin-bg-deep,
 .lv-skin-blue>.lv-skin-item-leftside{
   background-color:#222d32;
@@ -35,6 +39,10 @@
 .lv-skin-purple .lv-skin-bg-primary,
 .lv-skin-purple>.lv-skin-item-functions{
   background-color:#605ca8;
+}
+
+.lv-skin-purple .lv-skin-form-primary{
+  color:#605ca8;
 }
 
 .lv-skin-purple .lv-skin-bg-deep,
@@ -65,6 +73,10 @@
   background-color:#00a65a;
 }
 
+.lv-skin-green .lv-skin-form-primary{
+  color:#00a65a;
+}
+
 .lv-skin-green .lv-skin-bg-deep,
 .lv-skin-green>.lv-skin-item-leftside{
   background-color:#222d32;
@@ -90,6 +102,10 @@
 .lv-skin-red .lv-skin-bg-primary,
 .lv-skin-red>.lv-skin-item-functions{
   background-color:#dd4b39;
+}
+
+.lv-skin-red .lv-skin-form-primary{
+  color:#dd4b39;
 }
 
 .lv-skin-red .lv-skin-bg-deep,
@@ -119,6 +135,10 @@
   background-color:#f39c12;
 }
 
+.lv-skin-yellow .lv-skin-form-primary{
+  color:#f39c12;
+}
+
 .lv-skin-yellow .lv-skin-bg-deep,
 .lv-skin-yellow>.lv-skin-item-leftside{
   background-color:#222d32;
@@ -144,6 +164,10 @@
 .lv-skin-white .lv-skin-bg-primary,
 .lv-skin-white>.lv-skin-item-functions{
   background-color:#fff;
+}
+
+.lv-skin-white .lv-skin-form-primary{
+  color:#333;
 }
 
 .lv-skin-white .lv-skin-bg-deep,
