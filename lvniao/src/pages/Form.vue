@@ -18,6 +18,12 @@
             <span class="label" >年龄</span><LvSpinbox v-model="age"></LvSpinbox>
         </div>
         {{age}}
+        <div>
+            <span class="label" >年龄</span><LvSlider v-model="age"></LvSlider>
+        </div>
+        <div>
+            <span class="label" >年龄</span><LvSlider v-model="age" :interval="true"></LvSlider>
+        </div>
     </div>
 </template>
 
@@ -25,16 +31,17 @@
 import LvRadioGroup from '../widgets/form/LvRadioGroup';
 import LvCheckboxGroup from '../widgets/form/LvCheckboxGroup';
 import LvSpinbox from '../widgets/form/LvSpinbox';
+import LvSlider from '../widgets/form/LvSlider';
 export default{
     data:function(){
         return {
             gender:true,
             favorate:[1,3],
-            age:10
+            age:30
         }
     },
     components:{
-        LvRadioGroup,LvCheckboxGroup, LvSpinbox
+        LvRadioGroup,LvCheckboxGroup, LvSpinbox, LvSlider
     },
     methods:{
         changed(gender){
