@@ -1,6 +1,10 @@
 <template>
     <div class="lv-widget lv-form">
         <div>
+            <span class="label">姓名</span><LvInput v-model="name"></LvInput>
+        </div>
+        {{name}}
+        <div>
             <span class="label">性别</span><LvRadioGroup class="lv-form-border" :checked="gender"
                 :items="[{value:true, label:'男'}, {value:false, label:'女'}]"
                 @changed="changed">
@@ -24,6 +28,9 @@
         <div>
             <span class="label" >年龄</span><LvSlider v-model="age" :interval="true"></LvSlider>
         </div>
+        <div>
+            <span class="label" >籍贯</span><LvSelect v-model="age" :interval="true"></LvSelect>
+        </div>
     </div>
 </template>
 
@@ -32,16 +39,20 @@ import LvRadioGroup from '../widgets/form/LvRadioGroup';
 import LvCheckboxGroup from '../widgets/form/LvCheckboxGroup';
 import LvSpinbox from '../widgets/form/LvSpinbox';
 import LvSlider from '../widgets/form/LvSlider';
+import LvInput from '../widgets/form/LvInput';
+import LvSelect from '../widgets/form/LvSelect';
 export default{
     data:function(){
         return {
             gender:true,
             favorate:[1,3],
-            age:30
+            age:30,
+            name:'lvniao'
         }
     },
     components:{
-        LvRadioGroup,LvCheckboxGroup, LvSpinbox, LvSlider
+        LvRadioGroup,LvCheckboxGroup, LvSpinbox, LvSlider,
+        LvInput, LvSelect
     },
     methods:{
         changed(gender){
