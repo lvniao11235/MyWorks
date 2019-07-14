@@ -13,9 +13,9 @@
                             <div class="a-home-icon fa fa-window-maximize"></div>
                             <div class="a-home-text">对话框</div>
                         </div>
-                        <div class="a-home-item">
-                            <div class="a-home-icon fa fa-th-large"></div>
-                            <div class="a-home-text">布局</div>
+                        <div class="a-home-item" @click="routeTo('/forms')">
+                            <div class="a-home-icon fa fa-wpforms"></div>
+                            <div class="a-home-text">表单元素</div>
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
@@ -91,7 +91,7 @@ export default {
     line-height:60px !important;
     vertical-align:middle !important;
     text-align:center !important;
-    font-size:50px;
+    font-size:40px;
     width:100%;
     color:#04be02;
 }

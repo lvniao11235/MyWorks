@@ -1,7 +1,7 @@
 <template>
     <div class="a-page-container" :class="clazz">
         <slot name="header"></slot>
-        <div class="a-move-to-left">
+        <div>
             <slot name="content"></slot>
         </div>
         
@@ -21,7 +21,7 @@ export default {
     box-sizing:border-box;
     width:100%;
     overflow:scroll;
-    background-color:#fff;
+    background-color:#f4f5f6;;
 }
 
 .a-card-page{

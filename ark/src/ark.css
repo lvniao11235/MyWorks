@@ -144,3 +144,43 @@
 .a-span-10{
     width:100%;
 }
+
+
+.a-listview-item{
+    height:44px;
+    box-sizing:border-box;
+    border-bottom:1px solid #c7c7c7;
+    line-height:44px !important;
+    vertical-align:middle;
+    padding-left:30px;
+    background-color:#fff;
+    color: rgb(122, 126, 131);
+    position:relative;
+}
+
+.a-listview-item-right-icon{
+    position:absolute;
+    right:0px;
+    height:43px;
+    line-height:43px !important;
+    font-size:30px;
+    width:43px;
+    display:inline-block;
+    text-align:center;
+}
+
+.a-listview-item-left-icon{
+    position:absolute;
+    left:0px;
+    height:43px;
+    line-height:43px !important;
+    font-size:20px;
+    width:30px;
+    display:inline-block;
+    text-align:center;
+}
+
+.a-form .a-form-control{
+    font-size:14px;
+    box-sizing:border-box;
+}

@@ -26,6 +26,7 @@ export default {
 *{
   padding:0px;
   margin:0px;
+  color: rgb(122, 126, 131);
 }
 
 html, body, #app{

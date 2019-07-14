@@ -6,6 +6,7 @@ import Interfaces from '../pages/Interfaces';
 import Extend from '../pages/Extend';
 import Template from '../pages/Template';
 import Dialogs from '../pages/Dialogs';
+import Forms from '../pages/Forms';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -25,6 +26,8 @@ export default new VueRouter({
             path:'/layout', component:Layout
         },{
             path:'/dialogs', component:Dialogs
+        },{
+            path:'/forms', component:Forms
         }
     ]
 })
