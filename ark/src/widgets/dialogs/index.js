@@ -32,9 +32,10 @@ const aDialog = {
             cancelCallback:cancelCallback
         });
     },
-    datetime:function(datetime, callback){
+    datetime:function(datetime, controlType, callback){
         this.eventBus.$emit("showDialog", {type:"datetime", 
             datetime:datetime,
+            controlType:controlType,
             callback:callback
         });
     }

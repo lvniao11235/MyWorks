@@ -1,9 +1,7 @@
 <template>
     <div class="a-page-container" :class="clazz">
         <slot name="header"></slot>
-        <div>
-            <slot name="content"></slot>
-        </div>
+        <slot name="content"></slot>
         
     </div>
 </template>

@@ -8,6 +8,7 @@ import Template from '../pages/Template';
 import Dialogs from '../pages/Dialogs';
 import Forms from '../pages/Forms';
 import Calendar from '../pages/Calendar';
+import Text from '../pages/Text';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -31,6 +32,8 @@ export default new VueRouter({
             path:'/forms', component:Forms
         },{
             path:'/calendar', component:Calendar
+        },{
+            path:'/text', component:Text
         }
     ]
 })

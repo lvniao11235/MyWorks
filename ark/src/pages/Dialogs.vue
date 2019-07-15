@@ -23,6 +23,7 @@
                         <div class="a-listview-item" @click="datetime">
                             <span class="a-listview-item-left-icon fa fa-calendar"></span>
                             Datetime对话框
+                            <span class="a-listview-item-value">{{strCurrentDate}}</span>
                             <span class="a-listview-item-right-icon fa fa-angle-right"></span>
                         </div>
                     </div>
@@ -36,9 +37,21 @@
 <script>
 import PageContainer from '../widgets/cards/PageContainer';
 import CardHeader from '../widgets/cards/CardHeader';
+import moment from 'moment';
 export default {
     components:{
         PageContainer, CardHeader
+    },
+    data:function(){
+        return {
+            currentDate:null
+        }
+    },
+    computed:{
+        strCurrentDate(){
+            return this.currentDate != null ? 
+                moment(this.currentDate).format("YYYY-MM-DD HH:mm:ss"):"";
+        }
     },
     methods:{
         alert(){
@@ -63,7 +76,8 @@ export default {
         },
         datetime(){
             var _this = this;
-            this.aDialog.datetime(new Date(), function(){
+            this.aDialog.datetime(this.currentDate, "datetime", function(date){
+                _this.currentDate = new Date(date);
                 _this.aDialog.close();
             });
         }
