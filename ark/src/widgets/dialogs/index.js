@@ -31,6 +31,12 @@ const aDialog = {
             okCallback:okCallback, 
             cancelCallback:cancelCallback
         });
+    },
+    datetime:function(datetime, callback){
+        this.eventBus.$emit("showDialog", {type:"datetime", 
+            datetime:datetime,
+            callback:callback
+        });
     }
 }
 

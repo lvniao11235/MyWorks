@@ -60,6 +60,12 @@ export default {
             this.aDialog.wait("数据加载中", 5000, function(){
                 _this.aDialog.close();
             });
+        },
+        datetime(){
+            var _this = this;
+            this.aDialog.datetime(new Date(), function(){
+                _this.aDialog.close();
+            });
         }
     }
 }

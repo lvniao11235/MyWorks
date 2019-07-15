@@ -47,7 +47,7 @@ export default {
 }
 
 .a-nav-item.a-selected{
-    color: rgb(0, 122, 255)
+    color: rgb(0, 122, 255) !important;
 }
 
 .a-nav-item-icon{

@@ -19,7 +19,10 @@
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div></div>
+                        <div class="a-home-item" @click="routeTo('/calendar')">
+                            <div class="a-home-icon fa fa-calendar"></div>
+                            <div class="a-home-text">日历</div>
+                        </div>
                         <div></div>
                         <div></div>
                     </div>

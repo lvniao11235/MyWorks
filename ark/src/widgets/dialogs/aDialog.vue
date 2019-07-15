@@ -12,6 +12,7 @@
 import WaitDialog from './WaitDialog';
 import AlertDialog from './AlertDialog';
 import ConfirmDialog from './ConfirmDialog';
+import DatetimeDialog from './DatetimeDialog';
 export default {
     data:function(){
         return {
@@ -20,7 +21,7 @@ export default {
         }
     },
     components:{
-        WaitDialog, AlertDialog, ConfirmDialog
+        WaitDialog, AlertDialog, ConfirmDialog, DatetimeDialog
     },
     methods:{
         showDialogHandle(option){
@@ -33,6 +34,9 @@ export default {
                 }
                 case 'confirm': {
                     option.dialog = ConfirmDialog; break;
+                }
+                case 'datetime': {
+                    option.dialog = DatetimeDialog; break;
                 }
             }
             option.id = this.options.length;
