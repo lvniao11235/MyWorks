@@ -18,17 +18,34 @@
 
 <script>
 export default {
-    props:["direction"],
+    props:["direction", "seconds"],
     data:function(){
         return {
             currentIndex:0,
             oldIndex:0,
             length:0,
-            items:[]
+            items:[],
+            timer:0,
+        }
+    },
+    destroyed(){
+        if(this.timer > 0){
+            clearInterval(this.timer);
         }
     },
     methods:{
+        startTimer(){
+            if(this.timer > 0){
+                clearInterval(this.timer);
+            }
+            var _seconds = this.seconds ? this.seconds : 5000;
+            var _this = this;
+            this.timer = setInterval(function(){
+                _this.rightHandle();
+            }, _seconds);
+        },
         leftHandle(){
+            this.startTimer();
             this.oldIndex = this.currentIndex;
             if(this.currentIndex == 0){
                 this.currentIndex = this.length - 1;
@@ -38,6 +55,7 @@ export default {
             this.changeView();
         },
         rightHandle(){
+            this.startTimer();
             this.oldIndex = this.currentIndex;
             if(this.currentIndex == this.length-1){
                 this.currentIndex = 0;
@@ -47,6 +65,7 @@ export default {
             this.changeView();
         },
         indexHandle(item){
+            this.startTimer();
             this.oldIndex = this.currentIndex;
             this.currentIndex = item;
             this.changeView();
@@ -55,15 +74,23 @@ export default {
             return this.direction == "vertical" ? 
                 "a-carousel-moveup":"a-carousel-moveleft";
         },
+        toClassLeft(){
+            return this.direction == "vertical" ? 
+                ".a-carousel-moveup":".a-carousel-moveleft";
+        },
         toRight(){
             return this.direction == "vertical" ? 
                 "a-carousel-movedown":"a-carousel-moveright";
         },
+        toClassRight(){
+            return this.direction == "vertical" ? 
+                ".a-carousel-movedown":".a-carousel-moveright";
+        },
         changeView(){
             if(this.oldIndex == this.currentIndex) return;
-            this.$refs.carousel.querySelectorAll(this.toLeft())
+            this.$refs.carousel.querySelectorAll(this.toClassLeft())
                 .forEach(x=>x.classList.remove(this.toLeft()));
-            this.$refs.carousel.querySelectorAll(this.toRight())
+            this.$refs.carousel.querySelectorAll(this.toClassRight())
                 .forEach(x=>x.classList.remove(this.toRight()));
             this.$refs.carousel
                 .querySelector(".a-carousel-item-"+this.currentIndex)
@@ -121,7 +148,7 @@ export default {
             .querySelector('.a-carousel-index-' + this.currentIndex)
             .classList.add("a-carousel-selected"); 
         });
-           
+        this.startTimer();
     }
 }
 </script>
@@ -137,8 +164,6 @@ export default {
     width:100%;
     height:100%;
     position:absolute;
-    top:0px;
-    left:0px;
     z-index:5;
 }
 
@@ -240,21 +265,21 @@ export default {
 }
 
 .a-carousel-moveright.a-carousel-selected{
-    animation: fromleft 2s !important;
+    animation: fromleft 2s;
 }
 
 
 
 @keyframes toup
 {
-    from {margin-up: 0px;}
-    to {margin-up: -100%;}
+    from {top: 0px;}
+    to {top: -100%;}
 }
 
 @keyframes fromdown
 {
-    from {margin-up: 100%;}
-    to {margin-up: 0;}
+    from {top: 100%;}
+    to {top: 0px;}
 }
 
 .a-carousel-moveup{
@@ -263,19 +288,19 @@ export default {
 }
 
 .a-carousel-moveup.a-carousel-selected{
-    animation: fromdown 2s !important;
+    animation: fromdown 2s;
 }
 
 @keyframes todown
 {
-    from {margin-up: 0px;}
-    to {margin-up: 100%;}
+    from {top: 0px;}
+    to {top: 100%;}
 }
 
 @keyframes fromup
 {
-    from {margin-up: -100%;}
-    to {margin-up: 0;}
+    from {top: -100%;}
+    to {top: 0;}
 }
 
 .a-carousel-movedown{

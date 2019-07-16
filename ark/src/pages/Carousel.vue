@@ -14,7 +14,7 @@
                     </template>
                 </Carousel>
 
-                <Carousel style="height:200px;margin-top:20px" :direction="'vertical'">
+                <Carousel style="height:200px;margin-top:20px" :seconds="3000" :direction="'vertical'">
                     <template>
                         <img src="../assets/carousel/1.jpg"/>
                         <img src="../assets/carousel/2.jpg"/>

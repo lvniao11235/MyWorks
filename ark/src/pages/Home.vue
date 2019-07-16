@@ -41,7 +41,12 @@
                             <div class="a-home-icon fa fa-picture-o"></div>
                             <div class="a-home-text">轮播</div>
                         </div>
-                        <div></div>
+                        <div class="a-home-item" @click="routeTo('/timeaxis')">
+                            <div class="a-home-icon">
+                                <img src="../assets/icon/timeaxis.svg"/>
+                            </div>
+                            <div class="a-home-text">时间轴</div>
+                        </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
                         <div></div>
@@ -118,6 +123,16 @@ export default {
     text-align:center;
     font-size:20px;
     color: rgb(122, 126, 131);
+}
+
+.a-home-icon img{
+    width:42px;
+    height:40px;
+    margin-top:10px;
+}
+
+.a-home-icon img path{
+    fill:red;
 }
 </style>
 
