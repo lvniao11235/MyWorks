@@ -9,6 +9,9 @@ import Dialogs from '../pages/Dialogs';
 import Forms from '../pages/Forms';
 import Calendar from '../pages/Calendar';
 import Text from '../pages/Text';
+import Tables from '../pages/Tables';
+import Refresh from '../pages/Refresh';
+import Carousel from '../pages/Carousel';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -34,6 +37,12 @@ export default new VueRouter({
             path:'/calendar', component:Calendar
         },{
             path:'/text', component:Text
+        },{
+            path:'/tables', component:Tables
+        },{
+            path:'/refresh', component:Refresh
+        },{
+            path:'/carousel', component:Carousel
         }
     ]
 })

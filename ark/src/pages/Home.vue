@@ -27,11 +27,20 @@
                             <div class="a-home-icon fa fa-file-text-o"></div>
                             <div class="a-home-text">文本编辑器</div>
                         </div>
-                        <div></div>
+                        <div class="a-home-item" @click="routeTo('/tables')">
+                            <div class="a-home-icon fa fa-table"></div>
+                            <div class="a-home-text">表格</div>
+                        </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div></div>
-                        <div></div>
+                        <div class="a-home-item" @click="routeTo('/refresh')">
+                            <div class="a-home-icon fa fa-refresh"></div>
+                            <div class="a-home-text">下拉刷新</div>
+                        </div>
+                        <div class="a-home-item" @click="routeTo('/carousel')">
+                            <div class="a-home-icon fa fa-picture-o"></div>
+                            <div class="a-home-text">轮播</div>
+                        </div>
                         <div></div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">

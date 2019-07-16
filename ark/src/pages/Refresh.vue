@@ -1,7 +1,7 @@
 <template>
-    <div class="a-dialogs">
+    <div class="a-page-refresh">
         <PageContainer :clazz="'a-card-fullpage'">
-            <CardHeader slot="header" :title="''" :hasBack="true"></CardHeader>
+            <CardHeader slot="header" :title="'下拉刷新'" :hasBack="true"></CardHeader>
             <div slot="content">
             </div>
         </PageContainer>
