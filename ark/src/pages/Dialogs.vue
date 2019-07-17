@@ -91,8 +91,27 @@ export default {
             this.aDialog.form({
                 title:"登录",
                 forms:[
-                    {name:'user_name', label:'用户名', type:'text', placeholder:'请输入用户名'},
-                    {name:'user_pass', label:'密码', type:'password', placeholder:'请输入密码'}
+                    {name:'user_name', label:'用户名', value:"123", type:'text', placeholder:'请输入用户名'},
+                    {name:'user_pass', label:'密码', value:"456", type:'password', placeholder:'请输入密码'},
+                    {name:'user_gender', label:'性别', type:"radiogroup", value:true, items:[
+                        {text:'男', value:true},
+                        {text:'女', value:false},
+                    ]},
+                    {name:'user_grade', label:'年级', value:3, type:'radiogroup', items:[
+                        {text:'一年级', value:1},
+                        {text:'二年级', value:2},
+                        {text:'三年级', value:3},
+                        {text:'四年级', value:4},
+                        {text:'五年级', value:5},
+                        {text:'六年级', value:6},
+                    ]},
+                    {name:'user_faviorate', label:'爱好', value:3, type:'checkgroup', items:[
+                        {text:'篮球', value:1},
+                        {text:'足球', value:2},
+                        {text:'排球', value:3},
+                        {text:'乒乓球', value:4},
+                        {text:'羽毛球', value:5},
+                    ]}
                 ]
             }, function(data){
                 _this.aDialog.alert(JSON.stringify(data), "数据", function(){

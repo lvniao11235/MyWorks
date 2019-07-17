@@ -5,8 +5,8 @@
                 <CardHeader slot="header" :title="'表单元素'" :hasBack="true"></CardHeader>
                 <div slot="content" class="a-form">
                     <div class="a-row-container a-row-center" style="height:50px;">
-                        <aLabel :value="'姓名'" class="a-span-3"></aLabel>
-                        <aText class="a-span-7"></aText>
+                        <aLabel :text="'姓名'" class="a-span-3"></aLabel>
+                        <aText :option="{type:'text'}" class="a-span-7"></aText>
                     </div>
                 </div>
             </template>

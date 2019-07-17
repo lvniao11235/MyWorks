@@ -1,5 +1,5 @@
 <template>
-    <div class="a-drag-dialog" ref="dragDialog" @mousedown.prevent="mousedownHandle($event)">
+    <div class="a-drag-dialog" ref="dragDialog" @mousedown="mousedownHandle($event)">
         <slot></slot>
     </div>
 </template>

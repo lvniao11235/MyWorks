@@ -8,10 +8,9 @@
                 </div>
                 <div class="a-row-container a-row-center"
                     v-for="elem in option.metaData.forms" :key="elem.name">
-                    <span class="a-span-3">{{elem.label}}</span>
-                    <input  class="a-span-7" :type="elem.type" 
-                        :placeholder="elem.placeholder" v-model="data[elem.name]"
-                        :name="elem.name"/>
+                    <aLabel class="a-span-3" :text="elem.label"></aLabel>
+                    <component  class="a-span-7" :is="which(elem.type)" :option="elem" v-model="data[elem.name]">
+                    </component>
                 </div>
                 <div class="a-confirm-btns">
                     <div class="a-confirm-ok" @click="ok">确定</div>
@@ -24,13 +23,18 @@
 
 <script>
 import DragContainer from '../controls/DragContainer';
+import aLabel from '../controls/aLabel';
+import aText from '../controls/aText';
+import aRadioGroup from '../controls/aRadioGroup';
+import aCheckboxGroup from '../controls/aCheckboxGroup';
 export default {
     props:["option"],
     computed:{
 
     },
     components:{
-        DragContainer
+        DragContainer, aLabel, aText,
+        aRadioGroup, aCheckboxGroup
     },
     data:function(){
         return {
@@ -38,6 +42,15 @@ export default {
         }
     },
     methods:{
+        which(type){
+            switch(type){
+                case 'text': return aText;
+                case 'password': return aText;
+                case 'radiogroup': return aRadioGroup;
+                case 'checkgroup': return aCheckboxGroup;
+            }
+            return null;
+        },
         close(){
             this.aDialog.close();
         },
@@ -50,10 +63,11 @@ export default {
             this.aDialog.close();
         }
     },
-    mounted(){
+    created(){
         if(this.option.metaData && this.option.metaData.forms){
             for(var elem in this.option.metaData.forms){
-                this.data[this.option.metaData.forms[elem].name] = null;
+                this.data[this.option.metaData.forms[elem].name] = 
+                    this.option.metaData.forms[elem].value;
             }
         }
     }

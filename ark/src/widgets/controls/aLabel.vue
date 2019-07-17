@@ -1,10 +1,10 @@
 <template>
-    <span class="a-label a-form-control">{{value}}</span>
+    <span class="a-label a-form-control">{{text}}</span>
 </template>
 
 <script>
 export default {
-    props:["value"]
+    props:["text"]
 }
 </script>
 
