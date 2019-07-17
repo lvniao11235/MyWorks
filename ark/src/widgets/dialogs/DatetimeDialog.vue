@@ -1,65 +1,70 @@
 <template>
     <div class="a-datetime-dialog a-page-center">
-        <div class="a-datetime-header">
-            <span class="fa fa-angle-left" @click="dateJump(-1)" v-if="type != 4"></span>
-            <span class="a-datetime-year" @click="changeView(3)">{{currentYear}}</span>
-            <span>年</span>
-            <span class="a-datetime-month" @click="changeView(2)">{{currentMonth}}</span>
-            <span>月</span>
-            <template v-if="type==4">
-                <span class="a-datetime-month" @click="changeView(1)">{{currentDate}}</span>
-                <span>日</span>
-            </template>
-            <span class="fa fa-angle-right" @click="dateJump(1)" v-if="type != 4"></span>
-        </div>
-        <template  v-if="type == 1">
-            <div class="a-datetime-day-item a-datetime-day-header">日</div>
-            <div class="a-datetime-day-item a-datetime-day-header">一</div>
-            <div class="a-datetime-day-item a-datetime-day-header">二</div>
-            <div class="a-datetime-day-item a-datetime-day-header">三</div>
-            <div class="a-datetime-day-item a-datetime-day-header">四</div>
-            <div class="a-datetime-day-item a-datetime-day-header">五</div>
-            <div class="a-datetime-day-item a-datetime-day-header">六</div>
-            <div v-for="(day, index) in days"
-                :key="day.getTime()"  @click="changeDate(day)" 
-                :class="{'a-border-top': (index+1)/7 > 1, 'a-border-right':(index+1)%7!=0}"
-                class="a-datetime-day-item">
-                <div :class="{'a-datetime-selected':currentDate == day.getDate() && (currentMonth-1) == day.getMonth(),
-                    'a-datetime-weekend':(day.getDay() == 0 || day.getDay() == 6) && (currentMonth-1) == day.getMonth()}"
-                    :style="{color:(day.getMonth()+1) == currentMonth ? 'inherit':'#ddd'}">
-                    {{day.getDate()}}
+        <DragContainer>
+            <div class="a-datetime-dialog-container">
+                <div class="a-datetime-header">
+                    <span class="fa fa-angle-left" @click="dateJump(-1)" v-if="type != 4"></span>
+                    <span class="a-datetime-year" @click="changeView(3)">{{currentYear}}</span>
+                    <span>年</span>
+                    <span class="a-datetime-month" @click="changeView(2)">{{currentMonth}}</span>
+                    <span>月</span>
+                    <template v-if="type==4">
+                        <span class="a-datetime-month" @click="changeView(1)">{{currentDate}}</span>
+                        <span>日</span>
+                    </template>
+                    <span class="fa fa-angle-right" @click="dateJump(1)" v-if="type != 4"></span>
                 </div>
-             </div>
-        </template>
-        <template v-if="type == 2">
-            <div v-for="(month, index) in MONTH" 
-                class="a-datetime-month-item" :key="month" @click="changeMonth(month)"
-                :class="{'a-border-top': (index+1)/4 > 1, 'a-border-right':(index+1)%4!=0}">
-                <div :class="{'a-datetime-selected':currentMonth == month}">{{month}}</div>
+                <template  v-if="type == 1">
+                    <div class="a-datetime-day-item a-datetime-day-header">日</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">一</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">二</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">三</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">四</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">五</div>
+                    <div class="a-datetime-day-item a-datetime-day-header">六</div>
+                    <div v-for="(day, index) in days"
+                        :key="day.getTime()"  @click="changeDate(day)" 
+                        :class="{'a-border-top': (index+1)/7 > 1, 'a-border-right':(index+1)%7!=0}"
+                        class="a-datetime-day-item">
+                        <div :class="{'a-datetime-selected':currentDate == day.getDate() && (currentMonth-1) == day.getMonth(),
+                            'a-datetime-weekend':(day.getDay() == 0 || day.getDay() == 6) && (currentMonth-1) == day.getMonth()}"
+                            :style="{color:(day.getMonth()+1) == currentMonth ? 'inherit':'#ddd'}">
+                            {{day.getDate()}}
+                        </div>
+                    </div>
+                </template>
+                <template v-if="type == 2">
+                    <div v-for="(month, index) in MONTH" 
+                        class="a-datetime-month-item" :key="month" @click="changeMonth(month)"
+                        :class="{'a-border-top': (index+1)/4 > 1, 'a-border-right':(index+1)%4!=0}">
+                        <div :class="{'a-datetime-selected':currentMonth == month}">{{month}}</div>
+                    </div>
+                </template>
+                <template  v-if="type == 3">
+                    <div v-for="(year, index) in YEAR"
+                        class="a-datetime-year-item" :key="year" @click="changeYear(year)"
+                        :class="{'a-border-top': (index+1)/3 > 1, 'a-border-right':(index+1)%3!=0}">
+                        <div :class="{'a-datetime-selected':currentYear == year}">{{year}}</div>
+                    </div>
+                </template>
+                <template  v-if="type == 4">
+                    <div class="a-datetime-time">
+                        <input type="text" v-model.number="currentHour"/> :
+                        <input type="text" v-model.number="currentMinute"/> :
+                        <input type="text" v-model.number="currentSecond"/>
+                    </div>
+                </template>
+                <div class="a-datetime-foot">
+                    <div @click="ok">确定</div>
+                    <div @click="cancel">取消</div>
+                </div>
             </div>
-        </template>
-        <template  v-if="type == 3">
-            <div v-for="(year, index) in YEAR"
-                class="a-datetime-year-item" :key="year" @click="changeYear(year)"
-                :class="{'a-border-top': (index+1)/3 > 1, 'a-border-right':(index+1)%3!=0}">
-                <div :class="{'a-datetime-selected':currentYear == year}">{{year}}</div>
-            </div>
-        </template>
-        <template  v-if="type == 4">
-            <div class="a-datetime-time">
-                <input type="text" v-model.number="currentHour"/> :
-                <input type="text" v-model.number="currentMinute"/> :
-                <input type="text" v-model.number="currentSecond"/>
-            </div>
-        </template>
-        <div class="a-datetime-foot">
-            <div @click="ok">确定</div>
-            <div @click="cancel">取消</div>
-        </div>
+        </DragContainer>
     </div>
 </template>
 
 <script>
+import DragContainer from '../controls/DragContainer';
 export default {
     props:["option"],
     data:function(){
@@ -78,6 +83,9 @@ export default {
             currentMinute:0,
             currentSecond:0
         }
+    },
+    components:{
+        DragContainer
     },
     mounted(){
         var date = new Date();
@@ -178,13 +186,14 @@ export default {
 <style>
 .a-datetime-dialog{
     width:70%;
-    border-radius:5px;
+    
+}
+
+.a-datetime-dialog-container{
+    width:100%;
     background-color:#fff;
-    z-index:10000;
     text-align:center;
     color:#888888;
-    border:1px solid #d5d5d6;
-    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
 }
 
 .a-datetime-header{

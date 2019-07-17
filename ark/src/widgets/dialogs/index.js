@@ -38,7 +38,13 @@ const aDialog = {
             controlType:controlType,
             callback:callback
         });
-    }
+    },
+    form:function(metaData, callback){
+        this.eventBus.$emit("showDialog", {type:"form", 
+            metaData:metaData,
+            callback:callback
+        });
+    },
 }
 
 export default {

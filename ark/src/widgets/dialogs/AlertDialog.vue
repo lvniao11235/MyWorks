@@ -1,16 +1,24 @@
 <template>
-    <div class="a-alert-dialog a-page-center">
-        <div class="a-alert-title">{{this.option.title ? this.option.title:"提示"}}</div>
-        <div class="a-alert-msg" v-html="this.option.msg"></div>
-        <div class="a-separator"></div>
-        <div class="a-alert-ok" @click="ok">确定</div>
+    <div class="a-alert-dialog a-page-center" >
+        <DragContainer>
+            <div class="a-alert-dialog-container">
+                <div class="a-alert-title">{{this.option.title ? this.option.title:"提示"}}</div>
+                <div class="a-alert-msg" v-html="this.option.msg"></div>
+                <div class="a-separator"></div>
+                <div class="a-alert-ok" @click="ok">确定</div>
+            </div>
+        </DragContainer>
     </div>
 </template>
 
 <script>
+import DragContainer from '../controls/DragContainer';
 export default {
     props:["option"],
     created(){
+    },
+    components:{
+        DragContainer
     },
     methods:{
         ok(){
@@ -28,13 +36,12 @@ export default {
 <style>
 .a-alert-dialog{
     width:70%;
-    border-radius:5px;
-    background-color:#fff;
-    z-index:10000;
+}
+
+.a-alert-dialog-container{
+    width:100%;
     text-align:center;
     color:#888888;
-    border:1px solid #d5d5d6;
-    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
 }
 
 .a-alert-title{

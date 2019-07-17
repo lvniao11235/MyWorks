@@ -13,6 +13,7 @@ import WaitDialog from './WaitDialog';
 import AlertDialog from './AlertDialog';
 import ConfirmDialog from './ConfirmDialog';
 import DatetimeDialog from './DatetimeDialog';
+import FormDialog from './FormDialog';
 export default {
     data:function(){
         return {
@@ -21,7 +22,8 @@ export default {
         }
     },
     components:{
-        WaitDialog, AlertDialog, ConfirmDialog, DatetimeDialog
+        WaitDialog, AlertDialog, ConfirmDialog, DatetimeDialog,
+        FormDialog
     },
     methods:{
         showDialogHandle(option){
@@ -37,6 +39,9 @@ export default {
                 }
                 case 'datetime': {
                     option.dialog = DatetimeDialog; break;
+                }
+                case 'form':{
+                    option.dialog = FormDialog; break;
                 }
             }
             option.id = this.options.length;
@@ -70,6 +75,7 @@ export default {
     height:100%;
     width:100%;
     z-index:10000;
+    overflow:hidden;
 }
 
 .a-dialog-mask{

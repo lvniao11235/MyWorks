@@ -1,18 +1,26 @@
 <template>
-    <div class="a-alert-dialog a-page-center">
-        <div class="a-alert-title">{{this.option.title ? this.option.title:"提示"}}</div>
-        <div class="a-alert-msg" v-html="this.option.msg"></div>
-        <div class="a-separator"></div>
-        <div class="a-confirm-btns">
-            <div class="a-confirm-ok" @click="ok">确定</div>
-            <div class="a-confirm-cancel" @click="cancel">取消</div>
-        </div>
+    <div class="a-confirm-dialog a-page-center">
+        <DragContainer>
+            <div class="a-confirm-dialog-container">
+                <div class="a-alert-title">{{this.option.title ? this.option.title:"提示"}}</div>
+                <div class="a-alert-msg" v-html="this.option.msg"></div>
+                <div class="a-separator"></div>
+                <div class="a-confirm-btns">
+                    <div class="a-confirm-ok" @click="ok">确定</div>
+                    <div class="a-confirm-cancel" @click="cancel">取消</div>
+                </div>
+            </div>
+        </DragContainer>
     </div>
 </template>
 
 <script>
+import DragContainer from '../controls/DragContainer';
 export default {
     props:['option'],
+    components:{
+        DragContainer
+    },
     methods:{
         ok(){
             if(this.option.okCallback){
@@ -33,6 +41,15 @@ export default {
 </script>
 
 <style>
+.a-confirm-dialog{
+    width:70%;
+}
+
+.a-confirm-dialog-container{
+    width:100%;
+    text-align:center;
+    color:#888888;
+}
 .a-confirm-btns{
     font-size:0px;
 }

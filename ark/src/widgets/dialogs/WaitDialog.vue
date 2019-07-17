@@ -1,17 +1,25 @@
 <template>
     <div class="a-wait-dialog a-page-center">
-        <span class="fa fa-spinner"></span>
-        <div class="a-wait-dialog-msg" v-if="hasMsg">{{option.msg}}</div>
+        <DragContainer>
+            <div class="a-wait-dialog-container">
+                <span class="fa fa-spinner"></span>
+                <div class="a-wait-dialog-msg" v-if="hasMsg">{{option.msg}}</div>
+            </div>
+        </DragContainer>
     </div>
 </template>
 
 <script>
+import DragContainer from '../controls/DragContainer';
 export default {
     props:["option"],
     computed:{
         hasMsg(){
             return this.option && this.option.msg && this.option.msg.length > 0;
         }
+    },
+    components:{
+        DragContainer
     },
     created(){
         if(this.option.timeout){
@@ -29,17 +37,13 @@ export default {
 <style>
 .a-wait-dialog{
     width:50%;
-    border-radius:5px;
-    background-color:#fff;
-    z-index:10000;
-    line-height:50px;
-    vertical-align:middle !important;
     text-align:center;
-    font-size:30px !important;
     color:#888888;
-    border:1px solid #d5d5d6;
-    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
 
+}
+
+.a-wait-dialog-container{
+    width:100%;
 }
 
 @keyframes rotate{

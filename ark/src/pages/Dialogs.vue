@@ -26,6 +26,11 @@
                             <span class="a-listview-item-value">{{strCurrentDate}}</span>
                             <span class="a-listview-item-right-icon fa fa-angle-right"></span>
                         </div>
+                        <div class="a-listview-item" @click="form">
+                            <span class="a-listview-item-left-icon fa fa-wpforms"></span>
+                            Form对话框
+                            <span class="a-listview-item-right-icon fa fa-angle-right"></span>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -80,7 +85,21 @@ export default {
                 _this.currentDate = new Date(date);
                 _this.aDialog.close();
             });
-        }
+        },
+        form(){
+            var _this = this;
+            this.aDialog.form({
+                title:"登录",
+                forms:[
+                    {name:'user_name', label:'用户名', type:'text', placeholder:'请输入用户名'},
+                    {name:'user_pass', label:'密码', type:'password', placeholder:'请输入密码'}
+                ]
+            }, function(data){
+                _this.aDialog.alert(JSON.stringify(data), "数据", function(){
+                    _this.aDialog.closeAll();
+                })
+            })
+        },
     }
 }
 </script>
