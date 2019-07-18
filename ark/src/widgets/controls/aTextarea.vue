@@ -1,6 +1,7 @@
 <template>
-    <input class="a-form-text" :type="type ? type:option.type" v-model="localvalue"
-        :placeholder="placeholder ? placeholder:option.placeholder" :name="name ? name:option.name"/>
+    <textarea class="a-form-textarea" :type="type ? type:option.type" v-model="localvalue"
+        :placeholder="placeholder ? placeholder:option.placeholder" :name="name ? name:option.name">
+    </textarea>
 </template>
 
 <script>
@@ -29,16 +30,17 @@ export default {
 
 <style>
 
-.a-form-text{
+.a-form-textarea{
     outline:none;
     border:none;
     box-sizing:border-box;
     border:1px solid #c7c7c7;
-    height:30px;
-    line-height:28px;
+    min-height:60px;
+    line-height:20px;
     vertical-align:middle;
     border-radius:5px;
-    padding:0px 5px;
+    padding:2px 5px;
+    resize:none;
     
 }
 </style>

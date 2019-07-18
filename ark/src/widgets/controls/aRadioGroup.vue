@@ -1,7 +1,7 @@
 <template>
     <span class="a-form-radio-group">
         <template v-for="item in option.items">
-            <aRadio :option="item" :value="localvalue" :key="item.value" @input="changeValue"></aRadio>
+            <aRadio :option="item" v-model="localvalue" :key="item.value"></aRadio>
         </template>
     </span>
 </template>
@@ -19,11 +19,11 @@ export default {
         }
     },
     methods:{
-        changeValue(value){
-            this.$emit("input", value);
-        }
     },
     watch:{
+        localvalue(val){
+            this.$emit("input", val);
+        },
         value(val){
             this.localvalue = val;
         }

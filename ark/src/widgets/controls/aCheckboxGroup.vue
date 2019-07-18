@@ -15,21 +15,31 @@ export default {
     },
     data:function(){
         return {
-            localvalue:null
+            localvalue:[]
         }
     },
     methods:{
         changeValue(value){
-            this.$emit("input", value);
+            if(value.type == "add"){
+                this.localvalue.push(value.value);
+            } else {
+                var index = this.localvalue.indexOf(value.value);
+                this.localvalue.splice(index, 1);
+            }
+            this.$emit("input", this.localvalue);
         }
     },
     watch:{
         value(val){
-            this.localvalue = val;
+            for(var i=0; i<val.length; i++){
+                this.localvalue.push(val[i]);
+            }
         }
     },
     created(){
-        this.localvalue = this.value;
+        for(var i=0; i<this.value.length; i++){
+            this.localvalue.push(this.value[i]);
+        }
     }
 }
 </script>

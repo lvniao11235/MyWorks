@@ -105,13 +105,25 @@ export default {
                         {text:'五年级', value:5},
                         {text:'六年级', value:6},
                     ]},
-                    {name:'user_faviorate', label:'爱好', value:3, type:'checkgroup', items:[
+                    {name:'user_faviorate', label:'爱好', value:[3,4,5], type:'checkgroup', items:[
                         {text:'篮球', value:1},
                         {text:'足球', value:2},
                         {text:'排球', value:3},
                         {text:'乒乓球', value:4},
                         {text:'羽毛球', value:5},
-                    ]}
+                    ]},
+                    {name:'user_origin', label:'籍贯', value:[1, 2], multiply:true, 
+                        type:'select', placeholder:'请选择籍贯', items:[
+                            {text:'陕西', value:1},
+                            {text:'四川', value:2},
+                            {text:'河南', value:3},
+                            {text:'甘肃', value:4},
+                            {text:'河北', value:5},
+                            {text:'河南', value:6},
+                        ]},
+                    {name:'user_age', label:'年龄', value:0, type:'slider'},
+                    {name:'user_describe', label:'自我介绍', value:"0", type:'textarea'},
+                    {name:'user_onjob', label:'在职', value:true, type:'switch'}
                 ]
             }, function(data){
                 _this.aDialog.alert(JSON.stringify(data), "数据", function(){
