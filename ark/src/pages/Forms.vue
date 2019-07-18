@@ -6,7 +6,11 @@
                 <div slot="content" class="a-form">
                     <div class="a-row-container a-row-center" style="height:50px;">
                         <aLabel :text="'姓名'" class="a-span-3"></aLabel>
-                        <aText :option="{type:'text'}" class="a-span-7"></aText>
+                        <aText :option="{type:'text'}" v-model="age" class="a-span-7"></aText>
+                    </div>
+                    <div class="a-row-container a-row-center" style="height:50px;">
+                        <aLabel :text="'姓名'" class="a-span-3"></aLabel>
+                        <aSlider :option="{min:18, max:100}" v-model="age" class="a-span-7"></aSlider>
                     </div>
                 </div>
             </template>
@@ -20,9 +24,16 @@ import PageContainer from '../widgets/cards/PageContainer';
 import CardHeader from '../widgets/cards/CardHeader';
 import aLabel from '../widgets/controls/aLabel';
 import aText from '../widgets/controls/aText';
+import aSlider from '../widgets/controls/aSlider';
+
 export default {
     components:{
-        PageContainer, CardHeader, aLabel, aText
+        PageContainer, CardHeader, aLabel, aText, aSlider
+    },
+    data:function(){
+        return {
+            age:0
+        }
     },
     methods:{
     }

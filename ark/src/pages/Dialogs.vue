@@ -121,7 +121,7 @@ export default {
                             {text:'河北', value:5},
                             {text:'河南', value:6},
                         ]},
-                    {name:'user_age', label:'年龄', value:0, type:'slider'},
+                    {name:'user_age', label:'年龄', value:60, min:18, max:90, type:'slider'},
                     {name:'user_describe', label:'自我介绍', value:"0", type:'textarea'},
                     {name:'user_onjob', label:'在职', value:true, type:'switch'}
                 ]

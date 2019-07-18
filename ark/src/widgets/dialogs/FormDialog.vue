@@ -8,8 +8,8 @@
                 <div class="a-form-dialog-content">
                     <div class="a-row-container a-row-center"
                         v-for="elem in option.metaData.forms" :key="elem.name">
-                        <aLabel class="a-span-3" :text="elem.label"></aLabel>
-                        <component  class="a-span-7" :is="which(elem.type)" :option="elem" v-model="model[elem.name]">
+                        <aLabel class="a-span-2" :text="elem.label"></aLabel>
+                        <component  class="a-span-8" :is="which(elem.type)" :option="elem" v-model="model[elem.name]">
                         </component>
                     </div>
                 </div>
@@ -95,8 +95,8 @@ export default {
 
 .a-form-dialog-content{
     width:100%;
-    max-height:300px;
     overflow-y:scroll;
+    overflow-x:hidden;
 }
 
 

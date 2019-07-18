@@ -1,18 +1,35 @@
 <template>
-    <span class="a-form-slider">
-        <span class="a-form-slider-bar" :style="{width:value+'px'}"></span>
+    <span class="a-form-slider" ref="slider">
+        <span class="a-form-slider-bar" :style="{width:localValue+'px'}"></span>
         <span class="a-form-slider-btn" @mousedown.prevent="mousedownHandle($event)"></span>
     </span>
 </template>
 
 <script>
 export default {
-    props:["value"],
+    props:["option", "value"],
     data:function(){
         return {
             xpos:0,
-            mousedown:false
+            mousedown:false,
+            localValue:0
         }
+    },
+    watch:{
+        value(val){
+            this.localValue = (val - this.option.min) * Math.floor(this.$refs.slider.clientWidth) / 
+                Math.abs(this.option.max-this.option.min);
+        },
+        /*
+        localValue(val){
+            this.$emit("input", Math.floor(val * Math.abs(this.option.max-this.option.min) / 
+                Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
+        }
+        */
+    },
+    mounted(){
+        this.localValue = (this.value - this.option.min) * Math.floor(this.$refs.slider.clientWidth) / 
+                Math.abs(this.option.max-this.option.min);
     },
     methods:{
         mousedownHandle(e){
@@ -27,15 +44,17 @@ export default {
                 },
                 document.onmousemove = ex => {
                     if(_this.mousedown){
-                        var newvalue = _this.value + (ex.clientX - _this.xpos);
+                        var newvalue = _this.localValue + (ex.clientX - _this.xpos);
                         if(newvalue < 0){
                             newvalue = 0;
-                        } else if(newvalue > 100){
-                            newvalue = 100;
+                        } else if(newvalue > _this.$refs.slider.clientWidth){
+                            newvalue = _this.$refs.slider.clientWidth;
                         }
                     }
                     _this.xpos = ex.clientX;
-                    _this.$emit("input", newvalue);
+                    _this.localValue = newvalue;
+                    this.$emit("input", Math.floor(this.localValue * Math.abs(this.option.max-this.option.min) / 
+                        Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
                 }
             }
         }
@@ -52,9 +71,6 @@ export default {
     position:relative;
     text-align:left;
     border-radius:5px;
-    margin-left:10px;
-    margin-right:10px;
-    width:calc(70% - 7.5px) !important;
 }
 
 .a-form-slider-bar, .a-form-slider-btn{
@@ -64,7 +80,7 @@ export default {
 .a-form-slider-bar{
     height:10px;
     border-radius:5px;
-    background-color:green;
+    background-color:#409eff;
     float:left;
 }
 
@@ -75,8 +91,8 @@ export default {
     background-color:#fff;
     border-radius:7.5px;
     top:-2.5px;
-    position:absolute;
     margin-left:-7.5px;
+    position:absolute;
 }
 
 </style>
