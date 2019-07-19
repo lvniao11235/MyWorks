@@ -1,57 +1,57 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../pages/Home'
-import Layout from '../pages/Layout';
-import Interfaces from '../pages/Interfaces';
-import Extend from '../pages/Extend';
-import Template from '../pages/Template';
-import Dialogs from '../pages/Dialogs';
-import Forms from '../pages/Forms';
-import Calendar from '../pages/Calendar';
-import Text from '../pages/Text';
-import Tables from '../pages/Tables';
-import Refresh from '../pages/Refresh';
-import Carousel from '../pages/Carousel';
-import Timeaxis from '../pages/Timeaxis';
-import Layout2 from '../pages/Layout2';
-import Layout3 from '../pages/Layout3';
+import Home from '../pages/mobile/Home'
+import Layout from '../pages/mobile/Layout';
+import Interfaces from '../pages/mobile/Interfaces';
+import Extend from '../pages/mobile/Extend';
+import Template from '../pages/mobile/Template';
+import Dialogs from '../pages/mobile/Dialogs';
+import Forms from '../pages/mobile/Forms';
+import Calendar from '../pages/mobile/Calendar';
+import Text from '../pages/mobile/Text';
+import Tables from '../pages/mobile/Tables';
+import Refresh from '../pages/mobile/Refresh';
+import Carousel from '../pages/mobile/Carousel';
+import Timeaxis from '../pages/mobile/Timeaxis';
+import Layout2 from '../pages/mobile/Layout2';
+import Layout3 from '../pages/mobile/Layout3';
 Vue.use(VueRouter);
 
 export default new VueRouter({
     mode:'history',
     routes:[
         {
-            path:'/', redirect:'/home'
+            path:'/', redirect:'/mobile/home'
         },{
-            path:'/home', component:Home, meta:{ keepAlive:true}
+            path:'/mobile/home', component:Home, meta:{ keepAlive:true}
         },{
-            path:'/interfaces', component:Interfaces, meta:{ keepAlive:true}
+            path:'/mobile/interfaces', component:Interfaces, meta:{ keepAlive:true}
         },{
-            path:'/extend', component:Extend, meta:{ keepAlive:true}
+            path:'/mobile/extend', component:Extend, meta:{ keepAlive:true}
         },{
-            path:'/template', component:Template, meta:{ keepAlive:true}
+            path:'/mobile/template', component:Template, meta:{ keepAlive:true}
         },{
-            path:'/layout', component:Layout
+            path:'/mobile/layout', component:Layout
         },{
-            path:'/dialogs', component:Dialogs
+            path:'/mobile/dialogs', component:Dialogs
         },{
-            path:'/forms', component:Forms
+            path:'/mobile/forms', component:Forms
         },{
-            path:'/calendar', component:Calendar
+            path:'/mobile/calendar', component:Calendar
         },{
-            path:'/text', component:Text
+            path:'/mobile/text', component:Text
         },{
-            path:'/tables', component:Tables
+            path:'/mobile/tables', component:Tables
         },{
-            path:'/refresh', component:Refresh
+            path:'/mobile/refresh', component:Refresh
         },{
-            path:'/carousel', component:Carousel
+            path:'/mobile/carousel', component:Carousel
         },{
-            path:'/timeaxis', component:Timeaxis
+            path:'/mobile/timeaxis', component:Timeaxis
         },{
-            path:'/layout2', component:Layout2 
+            path:'/mobile/layout2', component:Layout2 
         },{
-            path:'/layout3', component:Layout3
+            path:'/mobile/layout3', component:Layout3
         }
     ]
 })

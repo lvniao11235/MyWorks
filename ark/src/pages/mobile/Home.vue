@@ -5,55 +5,55 @@
                 <CardHeader slot="header" :title="'组件'"></CardHeader>
                 <div slot="content">
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div class="a-home-item" @click="routeTo('/layout')">
+                        <div class="a-home-item" @click="routeTo('/mobile/layout')">
                             <div class="a-home-icon fa fa-th-large"></div>
                             <div class="a-home-text">布局</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/layout2')">
+                        <div class="a-home-item" @click="routeTo('/mobile/layout2')">
                             <div class="a-home-icon fa fa-th-large"></div>
                             <div class="a-home-text">布局2</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/layout3')">
+                        <div class="a-home-item" @click="routeTo('/mobile/layout3')">
                             <div class="a-home-icon fa fa-th-large"></div>
                             <div class="a-home-text">布局3</div>
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div class="a-home-item" @click="routeTo('/calendar')">
+                        <div class="a-home-item" @click="routeTo('/mobile/calendar')">
                             <div class="a-home-icon fa fa-calendar"></div>
                             <div class="a-home-text">日历</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/text')">
+                        <div class="a-home-item" @click="routeTo('/mobile/text')">
                             <div class="a-home-icon fa fa-file-text-o"></div>
                             <div class="a-home-text">文本编辑器</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/tables')">
+                        <div class="a-home-item" @click="routeTo('/mobile/tables')">
                             <div class="a-home-icon fa fa-table"></div>
                             <div class="a-home-text">表格</div>
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div class="a-home-item" @click="routeTo('/refresh')">
+                        <div class="a-home-item" @click="routeTo('/mobile/refresh')">
                             <div class="a-home-icon fa fa-refresh"></div>
                             <div class="a-home-text">下拉刷新</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/carousel')">
+                        <div class="a-home-item" @click="routeTo('/mobile/carousel')">
                             <div class="a-home-icon fa fa-picture-o"></div>
                             <div class="a-home-text">轮播</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/timeaxis')">
+                        <div class="a-home-item" @click="routeTo('/mobile/timeaxis')">
                             <div class="a-home-icon">
-                                <img src="../assets/icon/timeaxis.svg"/>
+                                <img src="../../assets/icon/timeaxis.svg"/>
                             </div>
                             <div class="a-home-text">时间轴</div>
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div class="a-home-item" @click="routeTo('/forms')">
+                        <div class="a-home-item" @click="routeTo('/mobile/forms')">
                             <div class="a-home-icon fa fa-wpforms"></div>
                             <div class="a-home-text">表单元素</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/dialogs')">
+                        <div class="a-home-item" @click="routeTo('/mobile/dialogs')">
                             <div class="a-home-icon fa fa-window-maximize"></div>
                             <div class="a-home-text">对话框</div>
                         </div>
@@ -77,8 +77,8 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
 export default {
     components:{
         PageContainer, CardHeader

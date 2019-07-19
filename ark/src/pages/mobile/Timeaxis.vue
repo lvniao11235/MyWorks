@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
-import TimeAxis from '../widgets/controls/TimeAxis';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
+import TimeAxis from '../../widgets/controls/TimeAxis';
 export default {
     components:{
         PageContainer, CardHeader, TimeAxis

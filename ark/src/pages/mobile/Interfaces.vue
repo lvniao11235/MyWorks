@@ -1,8 +1,8 @@
 <template>
-    <div class="a-template">
+    <div class="a-interfaces">
         <PageContainer :clazz="'a-card-page'">
             <template>
-                <CardHeader slot="header" :title="'模板'"></CardHeader>
+                <CardHeader slot="header" :title="'接口'"></CardHeader>
                 <div slot="content">
                     
                 </div>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
 export default {
     components:{
         PageContainer, CardHeader

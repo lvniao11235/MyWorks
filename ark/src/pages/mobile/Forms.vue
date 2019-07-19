@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
-import aLabel from '../widgets/controls/aLabel';
-import aText from '../widgets/controls/aText';
-import aSlider from '../widgets/controls/aSlider';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
+import aLabel from '../../widgets/controls/aLabel';
+import aText from '../../widgets/controls/aText';
+import aSlider from '../../widgets/controls/aSlider';
 
 export default {
     components:{

@@ -28,10 +28,10 @@
     </div>
 </template>
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
-import aText from '../widgets/controls/aText';
-import aLabel from '../widgets/controls/aLabel';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
+import aText from '../../widgets/controls/aText';
+import aLabel from '../../widgets/controls/aLabel';
 export default {
     components:{
         PageContainer, CardHeader, aText, aLabel

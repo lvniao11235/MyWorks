@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
 import moment from 'moment';
 export default {
     components:{
@@ -89,7 +89,7 @@ export default {
         form(){
             var _this = this;
             this.aDialog.form({
-                title:"登录",
+                title:"演示",
                 forms:[
                     {name:'user_name', label:'用户名', value:"123", type:'text', placeholder:'请输入用户名'},
                     {name:'user_pass', label:'密码', value:"456", type:'password', placeholder:'请输入密码'},

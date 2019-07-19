@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import PageContainer from '../widgets/cards/PageContainer';
-import CardHeader from '../widgets/cards/CardHeader';
-import '../widgets/controls/calendar/js-calendar.css';
-import {JSCalendar} from '../widgets/controls/calendar/js-calendar.js';
+import PageContainer from '../../widgets/cards/PageContainer';
+import CardHeader from '../../widgets/cards/CardHeader';
+import '../../widgets/controls/calendar/js-calendar.css';
+import {JSCalendar} from '../../widgets/controls/calendar/js-calendar.js';
 export default {
     components:{
         PageContainer, CardHeader
