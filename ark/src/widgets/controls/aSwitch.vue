@@ -35,22 +35,22 @@ export default {
 <style>
 .a-form-switch{
     text-align:left;
-    height:28px;
+    height:20px;
     position:relative;
 }
 
 .a-from-switch-bg{
     display:inline-block;
     height:100%;
-    width:50px;
+    width:32px;
     border-radius:14px;
     background-color:#c7c7c7;
 }
 
 .a-form-switch-btn{
     display:inline-block;
-    height:24px;
-    width:24px;
+    height:16px;
+    width:16px;
     border-radius:12px;
     background-color:#fff;
     margin:2px;

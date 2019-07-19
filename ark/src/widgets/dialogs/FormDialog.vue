@@ -30,6 +30,7 @@ import aSelect from '../controls/aSelect';
 import aSlider from '../controls/aSlider';
 import aTextarea from '../controls/aTextarea';
 import aSwitch from '../controls/aSwitch';
+import aSpinbox from '../controls/aSpinbox';
 export default {
     props:["option"],
     computed:{
@@ -38,7 +39,7 @@ export default {
     components:{
         aLabel, aText,
         aRadioGroup, aCheckboxGroup, aSelect,
-        aSlider, aTextarea, aSwitch
+        aSlider, aTextarea, aSwitch, aSpinbox
     },
     data:function(){
         return {
@@ -56,6 +57,7 @@ export default {
                 case 'slider': return aSlider;
                 case 'textarea': return aTextarea;
                 case 'switch': return aSwitch;
+                case 'spinbox': return aSpinbox;
             }
             return null;
         },

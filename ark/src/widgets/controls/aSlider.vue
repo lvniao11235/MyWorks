@@ -17,23 +17,31 @@ export default {
             mousedown:false,
             localValue:0,
             pagex:0,
+            min:0,
+            max:100,
         }
     },
     watch:{
         value(val){
-            this.localValue = (val - this.option.min) * Math.floor(this.$refs.slider.clientWidth) / 
-                Math.abs(this.option.max-this.option.min);
+            this.localValue = (val - this.min) * Math.floor(this.$refs.slider.clientWidth) / 
+                Math.abs(this.max-this.min);
         },
         /*
         localValue(val){
-            this.$emit("input", Math.floor(val * Math.abs(this.option.max-this.option.min) / 
-                Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
+            this.$emit("input", Math.floor(val * Math.abs(this.max-this.min) / 
+                Math.floor(this.$refs.slider.clientWidth)) + this.min);
         }
         */
     },
     mounted(){
-        this.localValue = (this.value - this.option.min) * Math.floor(this.$refs.slider.clientWidth) / 
-                Math.abs(this.option.max-this.option.min);
+        if(this.option.min){
+            this.min = this.option.min;
+        }
+        if(this.option.max){
+            this.max = this.option.max;
+        }
+        this.localValue = (this.value - this.min) * Math.floor(this.$refs.slider.clientWidth) / 
+                Math.abs(this.max-this.min);
     },
     methods:{
         touchstart(e){
@@ -47,8 +55,8 @@ export default {
                 this.localValue = this.$refs.slider.clientWidth;
             }
             this.pagex = e.touches[0].pageX;
-            this.$emit("input", Math.floor(this.localValue * Math.abs(this.option.max-this.option.min) / 
-                        Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
+            this.$emit("input", Math.floor(this.localValue * Math.abs(this.max-this.min) / 
+                        Math.floor(this.$refs.slider.clientWidth)) + this.min);
         },
         mousedownHandle(e){
             if(e.button == 0){
@@ -71,8 +79,8 @@ export default {
                     }
                     _this.xpos = ex.clientX;
                     _this.localValue = newvalue;
-                    this.$emit("input", Math.floor(this.localValue * Math.abs(this.option.max-this.option.min) / 
-                        Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
+                    this.$emit("input", Math.floor(this.localValue * Math.abs(this.max-this.min) / 
+                        Math.floor(this.$refs.slider.clientWidth)) + this.min);
                 }
             }
         }

@@ -123,7 +123,8 @@ export default {
                         ]},
                     {name:'user_age', label:'年龄', value:60, min:18, max:90, type:'slider'},
                     {name:'user_describe', label:'自我介绍', value:"0", type:'textarea'},
-                    {name:'user_onjob', label:'在职', value:true, type:'switch'}
+                    {name:'user_onjob', label:'在职', value:true, type:'switch'},
+                    {name:'user_workyear', label:'工作年限', value:3, type:'spinbox'}
                 ]
             }, function(data){
                 _this.aDialog.alert(JSON.stringify(data), "数据", function(){
