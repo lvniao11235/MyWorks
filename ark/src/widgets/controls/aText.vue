@@ -1,5 +1,5 @@
 <template>
-    <input class="a-form-text" :type="type ? type:option.type" v-model="localvalue"
+    <input class="a-form-text a-form-control" :type="type ? type:option.type" v-model="localvalue"
         :placeholder="placeholder ? placeholder:option.placeholder" :name="name ? name:option.name"/>
 </template>
 

@@ -9,13 +9,13 @@
                             <div class="a-home-icon fa fa-th-large"></div>
                             <div class="a-home-text">布局</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/dialogs')">
-                            <div class="a-home-icon fa fa-window-maximize"></div>
-                            <div class="a-home-text">对话框</div>
+                        <div class="a-home-item" @click="routeTo('/layout2')">
+                            <div class="a-home-icon fa fa-th-large"></div>
+                            <div class="a-home-text">布局2</div>
                         </div>
-                        <div class="a-home-item" @click="routeTo('/forms')">
-                            <div class="a-home-icon fa fa-wpforms"></div>
-                            <div class="a-home-text">表单元素</div>
+                        <div class="a-home-item" @click="routeTo('/layout3')">
+                            <div class="a-home-icon fa fa-th-large"></div>
+                            <div class="a-home-text">布局3</div>
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
@@ -49,8 +49,14 @@
                         </div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">
-                        <div></div>
-                        <div></div>
+                        <div class="a-home-item" @click="routeTo('/forms')">
+                            <div class="a-home-icon fa fa-wpforms"></div>
+                            <div class="a-home-text">表单元素</div>
+                        </div>
+                        <div class="a-home-item" @click="routeTo('/dialogs')">
+                            <div class="a-home-icon fa fa-window-maximize"></div>
+                            <div class="a-home-text">对话框</div>
+                        </div>
                         <div></div>
                     </div>
                     <div class="a-row-no-pad-container a-col-no-pad-3">

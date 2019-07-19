@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-label">{{text}}</span>
+    <span class="a-form-label a-form-control">{{text}}</span>
 </template>
 
 <script>

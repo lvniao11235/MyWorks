@@ -1,5 +1,8 @@
 <template>
-    <div class="a-drag-dialog" ref="dragDialog" @mousedown="mousedownHandle($event)">
+    <div class="a-drag-dialog" ref="dragDialog" 
+        @touchstart="touchstart"
+        @touchmove="touchmove"
+        @mousedown="mousedownHandle($event)">
         <slot></slot>
     </div>
 </template>
@@ -11,9 +14,29 @@ export default {
             xpos:0,
             ypos:0,
             mousedown:false,
+            pagex:0,
+            pagey:0,
         }
     },
     methods:{
+        touchstart(e){
+            this.pagex = e.touches[0].pageX;
+            this.pagey = e.touches[0].pageY;
+        },
+        touchmove(e){
+            var deltax = e.touches[0].pageX - this.pagex;
+            var deltay = e.touches[0].pageY - this.pagey;
+            var offsetx = this.$refs.dragDialog.offsetLeft;
+            var offsety = this.$refs.dragDialog.offsetTop;
+            this.$refs.dragDialog.style.margin="0px";
+            this.$refs.dragDialog.style.display="block";
+            this.$refs.dragDialog.style.width="auto";
+            this.$refs.dragDialog.style.height="auto";
+            this.$refs.dragDialog.style.top = (offsety + deltay) + "px";
+            this.$refs.dragDialog.style.left = (offsetx + deltax) + "px";
+            this.pagex = e.touches[0].pageX;
+            this.pagey = e.touches[0].pageY;
+        },
         mousedownHandle(e){
             if(e.button == 0){
                 this.mousedown = true;

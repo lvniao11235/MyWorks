@@ -13,6 +13,8 @@ import Tables from '../pages/Tables';
 import Refresh from '../pages/Refresh';
 import Carousel from '../pages/Carousel';
 import Timeaxis from '../pages/Timeaxis';
+import Layout2 from '../pages/Layout2';
+import Layout3 from '../pages/Layout3';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -46,6 +48,10 @@ export default new VueRouter({
             path:'/carousel', component:Carousel
         },{
             path:'/timeaxis', component:Timeaxis
+        },{
+            path:'/layout2', component:Layout2 
+        },{
+            path:'/layout3', component:Layout3
         }
     ]
 })

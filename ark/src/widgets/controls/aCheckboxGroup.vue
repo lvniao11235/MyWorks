@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-check-group">
+    <span class="a-form-check-group a-form-control">
         <template v-for="item in option.items">
             <aCheckbox :option="item" :value="localvalue" :key="item.value" @input="changeValue"></aCheckbox>
         </template>

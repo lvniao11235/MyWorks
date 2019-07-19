@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-radio-group">
+    <span class="a-form-radio-group a-form-control">
         <template v-for="item in option.items">
             <aRadio :option="item" v-model="localvalue" :key="item.value"></aRadio>
         </template>

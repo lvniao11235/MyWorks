@@ -1,7 +1,10 @@
 <template>
-    <span class="a-form-slider" ref="slider">
+    <span class="a-form-slider a-form-control" ref="slider">
         <span class="a-form-slider-bar" :style="{width:localValue+'px'}"></span>
-        <span class="a-form-slider-btn" @mousedown.prevent="mousedownHandle($event)"></span>
+        <span class="a-form-slider-btn"
+            @touchstart.stop.prevent="touchstart"
+            @touchmove.stop.prevent="touchmove"
+            @mousedown.prevent="mousedownHandle($event)"></span>
     </span>
 </template>
 
@@ -12,7 +15,8 @@ export default {
         return {
             xpos:0,
             mousedown:false,
-            localValue:0
+            localValue:0,
+            pagex:0,
         }
     },
     watch:{
@@ -32,6 +36,20 @@ export default {
                 Math.abs(this.option.max-this.option.min);
     },
     methods:{
+        touchstart(e){
+            this.pagex = e.touches[0].pageX;
+        },
+        touchmove(e){
+            this.localValue += e.touches[0].pageX - this.pagex;
+            if(this.localValue < 0){
+                this.localValue = 0;
+            } else if(this.localValue > this.$refs.slider.clientWidth){
+                this.localValue = this.$refs.slider.clientWidth;
+            }
+            this.pagex = e.touches[0].pageX;
+            this.$emit("input", Math.floor(this.localValue * Math.abs(this.option.max-this.option.min) / 
+                        Math.floor(this.$refs.slider.clientWidth)) + this.option.min);
+        },
         mousedownHandle(e){
             if(e.button == 0){
                 this.mousedown = true;

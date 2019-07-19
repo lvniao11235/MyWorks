@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-checkbox" @click.stop="changeValue">
+    <span class="a-form-checkbox a-form-control" @click.stop="changeValue">
         <span class="a-form-checkbox-icon fa" 
             :class="{'fa-check-square-o':value.indexOf(option.value) > -1, 'fa-square-o':value.indexOf(option.value) == -1}"></span>
         <span class="a-form-checkbox-label">{{option.text}}</span>

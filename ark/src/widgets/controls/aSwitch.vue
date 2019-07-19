@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-switch">
+    <span class="a-form-switch a-form-control">
         <span class="a-from-switch-bg">
             <span class="a-form-switch-btn"  @click.stop="changeValue"
                 :style="{float:localvalue?'left':'right'}"></span>

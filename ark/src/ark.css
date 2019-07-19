@@ -73,6 +73,10 @@
     width:33.33%;
 }
 
+.a-col-no-pad-3 > *{
+    width:33.33%;
+}
+
 .a-col-4 > *{
     width:calc(25% - 5px);
 }
@@ -91,6 +95,10 @@
 
 .a-col-7 > *{
     width:calc(14.28% - 5px);
+}
+
+.a-col-no-pad-7 > *{
+    width:14.28%;
 }
 
 .a-col-8 > *{
@@ -117,6 +125,10 @@
     width:calc(30% - 2.5px);
 }
 
+.a-span-no-pad-3{
+    width:30%;
+}
+
 .a-span-4{
     width:calc(40% - 2.5px);
 }
@@ -131,6 +143,10 @@
 
 .a-span-7{
     width:calc(70% - 2.5px);
+}
+
+.a-span-no-pad-7{
+    width:70%;
 }
 
 .a-span-8{

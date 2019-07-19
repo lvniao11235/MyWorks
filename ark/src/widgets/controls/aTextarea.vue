@@ -1,5 +1,5 @@
 <template>
-    <textarea class="a-form-textarea" :type="type ? type:option.type" v-model="localvalue"
+    <textarea class="a-form-textarea a-form-control" :type="type ? type:option.type" v-model="localvalue"
         :placeholder="placeholder ? placeholder:option.placeholder" :name="name ? name:option.name">
     </textarea>
 </template>

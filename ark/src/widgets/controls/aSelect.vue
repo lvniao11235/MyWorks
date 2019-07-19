@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-select">
+    <span class="a-form-select a-form-control">
         <span class="a-from-select-values">
             <span v-if="values.length == 0">{{option.placeholder}}</span>
             <span class="a-from-select-value" v-for="item in values"

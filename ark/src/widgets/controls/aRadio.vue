@@ -1,5 +1,5 @@
 <template>
-    <span class="a-form-radio" @click.stop="changeValue">
+    <span class="a-form-radio a-form-control" @click.stop="changeValue">
         <span class="a-form-radio-icon fa" 
             :class="{'fa-dot-circle-o':option.value == value, 'fa-circle-o':option.value != value}"></span>
         <span class="a-form-radio-label">{{option.text}}</span>
