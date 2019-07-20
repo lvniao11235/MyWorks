@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <CardContainer></CardContainer>
+    <component :is="which"></component>
     <a-dialog></a-dialog>
   </div>
 </template>
@@ -8,16 +8,37 @@
 <script>
 import aDialog from './widgets/dialogs/aDialog';
 import CardContainer from './widgets/cards/CardContainer';
+import AdminContainer from './widgets/admin/AdminContainer';
 export default {
   name: 'app',
   components: {
-    aDialog, CardContainer
+    aDialog, CardContainer, AdminContainer
+  },
+  computed:{
+    which(){
+      if(this.isMobile()){
+        return CardContainer;
+      } else {
+        return AdminContainer;
+      }
+    }
   },
   methods:{
+    isMobile() {
+      let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+      return flag;
+    }
   },
-  inject:["dialogEventBus"],
+  inject:["dialogEventBus", "adminEventBus"],
   created(){
     this.aDialog.init(this.dialogEventBus);
+  },
+  mounted(){
+    if(this.isMobile()){
+        this.$router.push("/mobile");
+      } else {
+        this.$router.push("/pc");
+      }
   }
 }
 </script>

@@ -15,7 +15,8 @@ new Vue({
   store,
   provide:function(){
     return {
-      dialogEventBus: new Vue()
+      dialogEventBus: new Vue(),
+      adminEventBus:new Vue()
     }
   }
 }).$mount('#app')

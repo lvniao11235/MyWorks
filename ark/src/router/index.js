@@ -15,6 +15,14 @@ import Carousel from '../pages/mobile/Carousel';
 import Timeaxis from '../pages/mobile/Timeaxis';
 import Layout2 from '../pages/mobile/Layout2';
 import Layout3 from '../pages/mobile/Layout3';
+import Main from '../pages/pc/Main';
+import PcLayout from '../pages/pc/Layout';
+import PcForm from '../pages/pc/Form';
+import PcTable from '../pages/pc/Table';
+import PcDialog from '../pages/pc/Dialog';
+import PcRichtext from '../pages/pc/Richtext';
+import PcMarkdown from '../pages/pc/Markdown';
+import PcChart from '../pages/pc/Chart';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -22,6 +30,10 @@ export default new VueRouter({
     routes:[
         {
             path:'/', redirect:'/mobile/home'
+        },{
+            path:'/mobile', redirect:'/mobile/home'
+        },{
+            path:'/pc', redirect:'/pc/main'
         },{
             path:'/mobile/home', component:Home, meta:{ keepAlive:true}
         },{
@@ -52,6 +64,22 @@ export default new VueRouter({
             path:'/mobile/layout2', component:Layout2 
         },{
             path:'/mobile/layout3', component:Layout3
+        },{
+            path:'/pc/main', component:Main
+        },{
+            path:'/pc/layout', component:PcLayout
+        },{
+            path:'/pc/form', component:PcForm
+        },{
+            path:'/pc/table', component:PcTable
+        },{
+            path:'/pc/dialog', component:PcDialog
+        },{
+            path:'/pc/richtext', component:PcRichtext
+        },{
+            path:'/pc/markdown', component:PcMarkdown
+        },{
+            path:'/pc/chart', component:PcChart
         }
     ]
 })

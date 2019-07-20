@@ -16,12 +16,12 @@
                         <div class="block"></div>
                     </div>
                     <div class="a-row-container a-col-3 a-row-center">
-                        <span style="border:1px solid red;height:20px;">1</span>
+                        <span style="background-color:gray;height:20px;">1</span>
                         <div class="block"></div>
                         <div class="block" style="height:60px;"></div>
                     </div>
                     <div class="a-row-container a-col-4" >
-                        <span style="border:1px solid red;height:20px;">1</span>
+                        <span style="background-color:gray;height:20px;">1</span>
                         <div class="block"></div>
                         <div class="block" style="height:60px;"></div>
                         <div class="block"></div>
@@ -166,7 +166,7 @@ export default {
 <style>
 .block{
     height:40px;
-    border:1px solid red;
+    background-color:gray;
     position:relative;
 }
 </style>

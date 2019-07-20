@@ -15,8 +15,8 @@ import {mapState, mapMutations} from 'vuex';
 export default {
     computed:{
         ...mapState({
-            navs:state=>state.config.navs,
-            currentNav:state=>state.config.currentNav,
+            navs:state=>state.mobile.navs,
+            currentNav:state=>state.mobile.currentNav,
         }),
     },
     methods:{
