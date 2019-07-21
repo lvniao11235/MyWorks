@@ -4,7 +4,7 @@
             <div class="a-tab-item-container" ref="tabcontainer">
                 <div class="a-tab-item" 
                     v-for="(tab, index) in tabs"
-                    :class="{'a-selected a-skin-border-primary a-skin-fg-selected':index == currentIndex}"
+                    :class="{'a-selected a-skin-bg-primary a-skin-border-primary a-skin-fg-primary':index == currentIndex}"
                     :key="tab.id" @click.stop="selectedTab(index)">
                         <span :class="tab.icon"></span>
                         {{tab.text}}
@@ -132,7 +132,7 @@ export default{
                 this.$refs.tabcontainer.children[0].style.marginLeft = 
                     parseInt(this.$refs.tabcontainer.children[0].style.marginLeft) + 
                         -1 * Math.min(width + marginleft - 
-                            this.$refs.tabcontainer.clientWidth + 30, 50) + "px";
+                            this.$refs.tabcontainer.clientWidth + 50, 100) + "px";
             }
             /*
             var width = 0;
@@ -172,23 +172,20 @@ export default{
                 this.$refs.tabcontainer.children[0].style.marginLeft = right + "px"
             }
             */
+        },
+        resizeHandle(){
+            this.$nextTick(function(){
+                this.moveTab();
+            });
         }
     },
     inject:['adminEventBus'],
     mounted(){
         this.adminEventBus.$on("openNewTab", this.openNewTabHandle);
-        this.adminEventBus.$on("resize", this.resizeHandle);
+        this.adminEventBus.$on("resized", this.resizeHandle);
         this.tabs.push(this.firstPage);
         this.currentIndex = 0;
         this.$router.push(this.firstPage.url);
-        var _this = this;
-        window.onresize = () => {
-            return (()=>{
-                _this.$nextTick(function(){
-                    _this.moveTab();
-                });
-            })();
-        };
     }
 }
 </script>
@@ -208,7 +205,7 @@ export default{
     padding:5px 10px;
     margin-left:5px;
     box-sizing:border-box;
-    height:30px;
+    height:31px;
     font-size:15px;
     line-height:19px;
     border:1px solid #c7c7c7;
@@ -225,6 +222,7 @@ export default{
     position:relative;
     width:100%;
     height:calc(100% - 36px);
+    background-color:#ecf0f5;
 }
 
 .a-tab-item-container{

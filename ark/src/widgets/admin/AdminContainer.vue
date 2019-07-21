@@ -1,5 +1,5 @@
 <template>
-    <div class="a-admin-container a-skin" :class="['a-skin-green', {'a-fold':fold}]">
+    <div class="a-admin-container a-skin" :class="[currentSkin, {'a-fold':fold}]">
         <div class="a-admin-head">
             <AdminLogo></AdminLogo>
             <FunctionContainer></FunctionContainer>
@@ -14,6 +14,7 @@ import FunctionContainer from './FunctionContainer';
 import AdminLeftSide from './AdminLeftSide';
 import AdminLogo from './AdminLogo';
 import AdminContentContainer from './AdminContentContainer';
+import {mapState} from 'vuex';
 export default {
     components:{
         FunctionContainer, AdminLeftSide,
@@ -23,6 +24,11 @@ export default {
         return {
             fold:false
         }
+    },
+    computed:{
+        ...mapState({
+            currentSkin:state=>state.admin.currentSkin
+        }),
     },
     methods:{
         foldHandle(flag){
@@ -35,7 +41,9 @@ export default {
         var _this = this;
         window.onresize = () => {
             return (()=>{
-                _this.adminEventBus.$emit("resize");
+                _this.$nextTick(function(){
+                    _this.adminEventBus.$emit("resized");
+                });
             })();
         };
     }
@@ -158,16 +166,32 @@ a-admin-functions{
     background-color:#00a65a;
 }
 
+.a-select-skin-green>.a-skin-bg-primary{
+    background-color:#00a65a !important;
+}
+
 .a-skin-green .a-skin-border-primary{
-    border-color:#00a65a;
+    border-color:#00a65a
+}
+
+.a-select-skin-green>.a-skin-border-primary{
+    border-color:#00a65a !important;
 }
 
 .a-skin-green .a-skin-bg-deep{
     background-color:#008d4c;
 }
 
+.a-select-skin-green>.a-skin-bg-deep{
+    background-color:#008d4c !important;
+}
+
 .a-skin-green .a-skin-bg-dark{
     background-color:#222d32;
+}
+
+.a-select-skin-green>.a-skin-bg-dark{
+    background-color:#222d32 !important;
 }
 
 .a-skin-green .a-skin-bg-shallow{
@@ -183,6 +207,153 @@ a-admin-functions{
 }
 
 .a-skin-green .a-skin-fg-normal{
+    color:#fff
+}
+
+
+.a-skin-blue .a-skin-bg-primary{
+    background-color:#3c8dbc;
+}
+
+.a-select-skin-blue>.a-skin-bg-primary{
+    background-color:#3c8dbc !important;
+}
+
+.a-skin-blue .a-skin-border-primary{
+    border-color:#3c8dbc;
+}
+
+.a-select-skin-blue>.a-skin-border-primary{
+    border-color:#3c8dbc !important;
+}
+
+.a-skin-blue .a-skin-bg-deep{
+    background-color:#367fa9; 
+}
+ 
+.a-select-skin-blue>.a-skin-bg-deep{
+    background-color:#367fa9 !important; 
+}
+
+.a-skin-blue .a-skin-bg-dark{
+    background-color:#222d32;
+}
+
+.a-select-skin-blue>.a-skin-bg-dark{
+    background-color:#222d32 !important;
+}
+
+.a-skin-blue .a-skin-bg-shallow{
+    background-color:#2c3b41;
+}
+
+.a-skin-blue .a-skin-fg-primary{
+    color:#fff;
+}
+
+.a-skin-blue .a-skin-fg-selected{
+    color:#3c8dbc
+}
+
+.a-skin-blue .a-skin-fg-normal{
+    color:#fff
+}
+
+
+.a-skin-red .a-skin-bg-primary{
+    background-color:#dd4b39;
+}
+
+.a-select-skin-red>.a-skin-bg-primary{
+    background-color:#dd4b39 !important;
+}
+
+.a-skin-red .a-skin-border-primary{
+    border-color:#dd4b39;
+}
+
+.a-select-skin-red>.a-skin-border-primary{
+    border-color:#dd4b39 !important;
+}
+
+.a-skin-red .a-skin-bg-deep{
+    background-color:#d73925;
+}
+
+.a-select-skin-red>.a-skin-bg-deep{
+    background-color:#d73925 !important;
+}
+
+.a-skin-red .a-skin-bg-dark{
+    background-color:#222d32;
+}
+
+.a-select-skin-red>.a-skin-bg-dark{
+    background-color:#222d32 !important;
+}
+
+.a-skin-red .a-skin-bg-shallow{
+    background-color:#2c3b41;
+}
+
+.a-skin-red .a-skin-fg-primary{
+    color:#fff;
+}
+
+.a-skin-red .a-skin-fg-selected{
+    color:#dd4b39
+}
+
+.a-skin-red .a-skin-fg-normal{
+    color:#fff
+}
+
+
+.a-skin-yellow .a-skin-bg-primary{
+    background-color:#f39c12;
+}
+
+.a-select-skin-yellow>.a-skin-bg-primary{
+    background-color:#f39c12 !important;
+}
+
+.a-skin-yellow .a-skin-border-primary{
+    border-color:#f39c12;
+}
+
+.a-select-skin-yellow>.a-skin-border-primary{
+    border-color:#f39c12 !important;
+}
+
+.a-skin-yellow .a-skin-bg-deep{
+    background-color:#e08e0b;
+}
+
+.a-select-skin-yellow>.a-skin-bg-deep{
+    background-color:#e08e0b !important;
+}
+
+.a-skin-yellow .a-skin-bg-dark{
+    background-color:#222d32;
+}
+
+.a-select-skin-yellow>.a-skin-bg-dark{
+    background-color:#222d32 !important;
+}
+
+.a-skin-yellow .a-skin-bg-shallow{
+    background-color:#2c3b41;
+}
+
+.a-skin-yellow .a-skin-fg-primary{
+    color:#fff;
+}
+
+.a-skin-yellow .a-skin-fg-selected{
+    color:#f39c12
+}
+
+.a-skin-yellow .a-skin-fg-normal{
     color:#fff
 }
 

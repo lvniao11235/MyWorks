@@ -23,6 +23,10 @@ import PcDialog from '../pages/pc/Dialog';
 import PcRichtext from '../pages/pc/Richtext';
 import PcMarkdown from '../pages/pc/Markdown';
 import PcChart from '../pages/pc/Chart';
+import PcMail from '../pages/pc/Mail';
+import PcNotify from '../pages/pc/Notify';
+import PcTask from '../pages/pc/Task';
+import PcUserInfo from '../pages/pc/UserInfo';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -80,6 +84,14 @@ export default new VueRouter({
             path:'/pc/markdown', component:PcMarkdown
         },{
             path:'/pc/chart', component:PcChart
+        },{
+            path:'/pc/mail', component:PcMail
+        },{
+            path:'/pc/notify', component:PcNotify
+        },{
+            path:'/pc/task', component:PcTask
+        },{
+            path:'/pc/userinfo', component:PcUserInfo
         }
     ]
 })
