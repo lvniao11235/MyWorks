@@ -174,20 +174,4 @@ export default{
     margin-bottom:0px;
 }
 
-@media screen  and (min-width:960px){
-    .a-admin-summarys{
-        width:50%;
-        position:relative;
-         display:inline-block;
-    }
-
-}
-
-@media screen  and (max-width:960px){
-    .a-admin-summarys{
-        width:100%;
-        position:relative;
-        display:inline-block;
-    }
-}
 </style>

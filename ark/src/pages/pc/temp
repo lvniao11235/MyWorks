@@ -1,0 +1,77 @@
+.a-col-xs-5{ width:calc(5% - 10px); }
+
+    .a-col-nopad-xs-5{ width:5%; margin:5px 0px !important;}
+
+	.a-col-xs-10{ width:calc(10% - 10px); }
+
+    .a-col-nopad-xs-10{ width:10%; margin:5px 0px !important;}
+	
+	.a-col-xs-15{ width:calc(15% - 10px); }
+
+    .a-col-nopad-xs-15{ width:15%; margin:5px 0px !important;}
+
+    .a-col-xs-20{ width:calc(20% - 10px); }
+
+    .a-col-nopad-xs-20{ width:20%; margin:5px 0px !important;}
+	
+    .a-col-xs-25{ width:calc(25% - 10px); }
+
+    .a-col-nopad-xs-25{ width:25%; margin:5px 0px !important;}
+	
+    .a-col-xs-30{ width:calc(30% - 10px); }
+
+    .a-col-nopad-xs-30{ width:30%; margin:5px 0px !important;}
+
+    .a-col-xs-35{ width:calc(35% - 10px); }
+
+    .a-col-nopad-xs-35{ width:35%; margin:5px 0px !important;}
+
+    .a-col-xs-40{ width:calc(40% - 10px); }
+
+    .a-col-nopad-xs-40{ width:40%; margin:5px 0px !important;}
+
+    .a-col-xs-45{ width:calc(45% - 10px); }
+
+    .a-col-nopad-xs-45{ width:45%; margin:5px 0px !important;}
+
+    .a-col-xs-50{ width:calc(50% - 10px); }
+
+    .a-col-nopad-xs-50{ width:50%; margin:5px 0px !important;}
+
+    .a-col-xs-55{ width:calc(55% - 10px); }
+
+    .a-col-nopad-xs-55{ width:55%; margin:5px 0px !important;}
+
+    .a-col-xs-60{ width:calc(60% - 10px); }
+
+    .a-col-nopad-xs-60{ width:60%; margin:5px 0px !important;}
+
+    .a-col-xs-65{ width:calc(65% - 10px); }
+
+    .a-col-nopad-xs-65{ width:65%; margin:5px 0px !important;}
+
+    .a-col-xs-70{ width:calc(70% - 10px); }
+
+    .a-col-nopad-xs-70{ width:70%; margin:5px 0px !important;}
+
+	.a-col-xs-75{ width:calc(75% - 10px); }
+
+    .a-col-nopad-xs-75{ width:75%; margin:5px 0px !important;}
+
+    .a-col-xs-80{ width:calc(80% - 10px); }
+
+    .a-col-nopad-xs-80{ width:80%; margin:5px 0px !important;}
+
+	.a-col-xs-85{ width:calc(85% - 10px); }
+
+    .a-col-nopad-xs-85{ width:85%; margin:5px 0px !important;}
+
+    .a-col-xs-90{ width:calc(90% - 10px); }
+
+    .a-col-nopad-xs-90{ width:90%; margin:5px 0px !important;}
+
+	.a-col-xs-95{ width:calc(95% - 10px); }
+
+    .a-col-nopad-xs-95{ width:95%; margin:5px 0px !important;}
+
+    .a-col-xs-100{ width:calc(100% - 10px); }
