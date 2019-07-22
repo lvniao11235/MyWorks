@@ -14,23 +14,23 @@
         </div>
         <div class="a-row">
             <div class="section a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25"
-                style="height:80px;">3-1</div>
+                style="height:80px;line-height:80px;">3-1</div>
             <div class="section a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25"
-                style="height:60px; margin-top:15px;">3-2</div>
+                style="height:60px;line-height:60px; margin-top:15px;">3-2</div>
             <div class="section a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25"
-                style="height:50px; margin-top:20px;">3-3</div>
+                style="height:50px;line-height:50px; margin-top:20px;">3-3</div>
             <div class="section a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25"
-                style="height:40px; margin-top:25px;">3-4</div>
+                style="height:40px;line-height:40px; margin-top:25px;">3-4</div>
         </div>
         <div class="a-row a-col-nopad">
             <div class="section a-col-nopad-lg-25 a-col-nopad-md-25 a-col-nopad-sm-25 a-col-nopad-xs-25"
-                style="height:80px;">4-1</div>
+                style="height:80px;line-height:80px;">4-1</div>
             <div class="section a-col-nopad-lg-25 a-col-nopad-md-25 a-col-nopad-sm-25 a-col-nopad-xs-25"
-                style="height:60px; margin-top:15px !important;">4-2</div>
+                style="height:60px;line-height:60px; margin-top:15px !important;">4-2</div>
             <div class="section a-col-nopad-lg-25 a-col-nopad-md-25 a-col-nopad-sm-25 a-col-nopad-xs-25"
-                style="height:50px; margin-top:20px !important;">4-3</div>
+                style="height:50px;line-height:50px; margin-top:20px !important;">4-3</div>
             <div class="section a-col-nopad-lg-25 a-col-nopad-md-25 a-col-nopad-sm-25 a-col-nopad-xs-25"
-                style="height:40px; margin-top:25px !important;">4-4</div>
+                style="height:40px;line-height:40px; margin-top:25px !important;">4-4</div>
         </div>
         <div class="a-row">
             <div class="a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25">

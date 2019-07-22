@@ -287,6 +287,9 @@ export default{
     height:50px;
     background-color:gray;
     border:1px solid red;
+    text-align:center;
+    line-height:50px;
+    vertical-align:middle;
 }
 
 
