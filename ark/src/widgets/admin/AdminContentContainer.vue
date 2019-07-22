@@ -214,6 +214,8 @@ export default{
     z-index:0px;
 }
 
+
+
 .a-tab-item.a-selected{
     border-bottom-color:#fff !important;
 }

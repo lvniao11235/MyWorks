@@ -27,6 +27,9 @@ import PcMail from '../pages/pc/Mail';
 import PcNotify from '../pages/pc/Notify';
 import PcTask from '../pages/pc/Task';
 import PcUserInfo from '../pages/pc/UserInfo';
+import PcLayout1 from '../pages/pc/Layout1';
+import PcLayout2 from '../pages/pc/Layout2';
+import PcLayout3 from '../pages/pc/Layout3';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -92,6 +95,12 @@ export default new VueRouter({
             path:'/pc/task', component:PcTask
         },{
             path:'/pc/userinfo', component:PcUserInfo
+        },{
+            path:'/pc/layout1', component:PcLayout1
+        },{
+            path:'/pc/layout2', component:PcLayout2
+        },{
+            path:'/pc/layout3', component:PcLayout3
         }
     ]
 })

@@ -1,7 +1,7 @@
 <template>
     <div class="a-admin-page a-page-main">
-        <div class="a-admin-summarys">
-            <div class="a-row-container a-col-2" >
+        <div class="a-row">
+            <div class="a-col-lg-25 a-col-md-50 a-col-sm-100">
                 <div class="a-main-summary">
                     <div class="a-main-summary-icon fa fa-envelope"
                         style="background-color:#00a65a"></div>
@@ -10,6 +10,8 @@
                         <div>88</div>
                     </div>
                 </div>
+            </div>
+            <div class="a-col-lg-25 a-col-md-50 a-col-sm-100">
                 <div class="a-main-summary">
                     <div class="a-main-summary-icon fa fa-bell"
                         style="background-color:#3c8dbc"></div>
@@ -19,9 +21,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="a-admin-summarys">
-            <div class="a-row-container a-col-2" >
+            <div class="a-col-lg-25 a-col-md-50 a-col-sm-100">
                 <div class="a-main-summary">
                     <div class="a-main-summary-icon fa fa-tasks"
                         style="background-color:#dd4b39"></div>
@@ -30,6 +30,8 @@
                         <div>8</div>
                     </div>
                 </div>
+            </div>
+            <div class="a-col-lg-25 a-col-md-50 a-col-sm-100">
                 <div class="a-main-summary">
                     <div class="a-main-summary-icon fa fa-users"
                         style="background-color:#f39c12"></div>
@@ -40,14 +42,18 @@
                 </div>
             </div>
         </div>
-        <div class="a-row-container a-col-1" >
-            <div class="a-window" style="height:150px;">
+        <div class="a-row">
+            <div class="a-col-lg-100 a-col-md-100" >
+                <div class="a-window" style="height:150px;">
+                </div>
             </div>
         </div>
-        <div class="a-row-container" >
-            <div class="a-window a-span-7-5" style="height:390px;">
+        <div class="a-row">
+            <div class="a-col-lg-75 a-col-md-100" >
+                <div class="a-window" style="height:390px;">
+                </div>
             </div>
-            <div class="a-span-2-5" style="height:150px;">
+            <div class="a-col-lg-25 a-summary-list a-col-md-100">
                 <div class="a-main-summary">
                     <div class="a-main-summary-icon fa fa-envelope"
                         style="background-color:#00a65a"></div>
@@ -93,14 +99,12 @@ export default{
 
 <style>
 .a-page-main{
-    padding:5px;
-    width:calc(100% - 10px);
-    height:calc(100% - 10px);
     position:relative;
 }
 
 .a-main-summary{
     height:90px;
+    width:100%;
     background-color:#fff;
     line-height:90px;
     vertical-align:middle;
@@ -119,6 +123,15 @@ export default{
     text-align:center;
     font-size:45px;
     color:#fff;
+    float:left;
+}
+
+.a-summary-list .a-main-summary{
+    margin-bottom:10px;
+}
+
+.a-summary-list .a-main-summary:last-child{
+    margin-bottom:0px;
 }
 
 .a-main-summary-text{

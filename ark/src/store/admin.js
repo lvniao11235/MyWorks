@@ -15,7 +15,12 @@ export default{
         currentLeftMenuId:1,
         leftMenu:[
             { id:1, icon:"fa fa-home", text:"主页", url:"/pc/main"}, 
-            { id:4, icon:"fa fa-th", text:"布局", url:"/pc/layout"}, 
+            { id:4, icon:"fa fa-th-large", text:"布局", items:[
+                {id:21, icon:"fa fa-th-large", text:"布局1", url:"/pc/layout"},
+                {id:22, icon:"fa fa-th-large", text:"布局2", url:"/pc/layout1"},
+                {id:23, icon:"fa fa-th-large", text:"布局3", url:"/pc/layout2"},
+                {id:24, icon:"fa fa-th-large", text:"布局4", url:"/pc/layout3"},
+            ]}, 
             {
                 id:2, icon:"fa fa-gears", text:"组件", items:[
                     {id:21, icon:"fa fa-bars", text:"表单", url:"/pc/form"},
