@@ -11,6 +11,7 @@ const ColumnModel = function(){
     this.isOperation = false;
     this.sort = 0;  //0:无序, 1:升序, -1:降序
     this.sortable = false;
+    this.deep = 0;
 }
 
 ColumnModel.extend = function(column){

@@ -25,6 +25,7 @@ export default{
                 id:2, icon:"fa fa-gears", text:"组件", items:[
                     {id:21, icon:"fa fa-bars", text:"表单", url:"/pc/form"},
                     {id:22, icon:"fa fa-table", text:"表格", url:"/pc/table"},
+                    {id:25, icon:"fa fa-table", text:"表格1", url:"/pc/table1"},
                     {id:23, icon:"fa fa-window-maximize", text:"对话框", url:"/pc/dialog"},
                     {id:24, icon:"fa fa-arrows", text:"拖曳", url:"/pc/drag"}
                 ]
