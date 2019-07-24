@@ -18,12 +18,15 @@ export default{
             { id:4, icon:"fa fa-th-large", text:"布局", items:[
                 {id:22, icon:"fa fa-th-large", text:"布局1", url:"/pc/layout1"},
                 {id:24, icon:"fa fa-th-large", text:"布局2", url:"/pc/layout2"},
+                {id:25, icon:"fa fa-th-large", text:"布局3", url:"/pc/layout3"},
+                {id:26, icon:"fa fa-th-large", text:"布局4", url:"/pc/layout4"},
             ]}, 
             {
                 id:2, icon:"fa fa-gears", text:"组件", items:[
                     {id:21, icon:"fa fa-bars", text:"表单", url:"/pc/form"},
                     {id:22, icon:"fa fa-table", text:"表格", url:"/pc/table"},
-                    {id:23, icon:"fa fa-window-maximize", text:"对话框", url:"/pc/dialog"}
+                    {id:23, icon:"fa fa-window-maximize", text:"对话框", url:"/pc/dialog"},
+                    {id:24, icon:"fa fa-arrows", text:"拖曳", url:"/pc/drag"}
                 ]
             }, {
                 id:3, icon:"fa fa-edit", text:"编辑器", items:[

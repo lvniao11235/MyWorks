@@ -12,6 +12,16 @@
             <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-3</div>
             <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-4</div>
         </div>
+        <div class="a-row" style="width:60%;margin:10px auto;">
+            <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-1</div>
+            <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-2</div>
+            <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-3</div>
+            <div class="section a-col-lg-25 a-col-md-50 a-col-sm-60 a-col-xs-100">2-4</div>
+        </div>
+        <div class="a-row" style="width:60%;margin:10px auto;">
+            <div class="section a-col-lg-50 a-col-md-50 a-col-sm-60 a-col-xs-100">2-1</div>
+            <div class="section a-col-lg-50 a-col-md-50 a-col-sm-60 a-col-xs-100">2-2</div>
+        </div>
         <div class="a-row">
             <div class="section a-col-lg-25 a-col-md-25 a-col-sm-25 a-col-xs-25"
                 style="height:80px;line-height:80px;">3-1</div>
