@@ -12,6 +12,10 @@ const ColumnModel = function(){
     this.sort = 0;  //0:无序, 1:升序, -1:降序
     this.sortable = false;
     this.deep = 0;
+    this.parent = {};
+    this.colspan = 0;
+    this.rowspan = 0;
+    this.index = 0;
 }
 
 ColumnModel.extend = function(column){
@@ -22,7 +26,9 @@ ColumnModel.extend = function(column){
                 res[prop] = column[prop];
             } else if(column.children){
                 for(var i=0; i<column.children.length; i++){
-                    res.children.push(ColumnModel.extend(column.children[i]));
+                    var col = ColumnModel.extend(column.children[i]);
+                    col.parent = res;
+                    res.children.push(col);
                 }
             }
         }
@@ -61,7 +67,10 @@ ColumnCollection.parse = function(columns){
         });
         columnCollection.deep = max + 1;
     }
-    columnCollection.headRows = ColumnCollection.parseRow(columnCollection);
+    columnCollection.headRows = 
+        ColumnCollection.parseRow(columnCollection.columnModels, columnCollection.deep);
+    columnCollection.mapColumns = 
+        ColumnCollection.getDisplayColumn(columnCollection.columnModels);
     return columnCollection;
 }
 
@@ -83,24 +92,65 @@ ColumnCollection._parse = function(columns){
     }
     return res;
 }
+
+ColumnCollection.getDisplayColumn = function(columns){
+    var res = [];
+    for(var i=0; i<columns.length; i++){
+        if(columns[i].children.length == 0){
+            res.push(columns[i])
+        } else {
+            var cols = ColumnCollection.getDisplayColumn(columns[i].children);
+            for(var j=0; j<cols.length; j++){
+                res.push(cols[j]);
+            }
+        }
+    }
+    return res;
+}
 ColumnCollection.parseRow = function(columns, deep){
     var res = [];
     for(var i=0; i<deep; i++){
-        var cols = [];
-        for(var j=0; j<columns.length; j++){
-            cols.push(columns[i]);
+        if(i == 0){
+            var cols = [];
+            for(var j=0; j<columns.length; j++){
+                cols.push(columns[j]);
+            }
+            res.push(cols);
+        } else {
+            cols = [];
+            for(j=0; j<res[i-1].length; j++){
+                if(res[i-1][j].children && res[i-1][j].children.length > 0){
+                    for(var k=0; k<res[i-1][j].children.length; k++){
+                        cols.push(res[i-1][j].children[k])
+                    }
+                }
+            }
+            res.push(cols);
         }
-        res.push(cols);
     }
-    
+    for(i=res.length-1; i>=0; i--){
+        for(j=0; j<res[i].length; j++){
+            if(res[i][j].children.length == 0){
+                res[i][j].colspan = 1;
+            } else {
+                for(k=0; k<res[i][j].children.length; k++){
+                    res[i][j].colspan += res[i][j].children[k].colspan;
+                }
+            }
+        }
+    }
+    for(i=0; i<res.length; i++){
+        for(j=0; j<res[i].length; j++){
+            if(res[i][j].children.length > 0){
+                res[i][j].rowspan = 1;
+            } else {
+                res[i][j].rowspan = deep - res[i][j].deep - i;
+            }
+            
+        }
+    }
     return res;
 }
-
-ColumnCollection.findColumnByDeep = function(columns, deep){
-    var res = [];
-    return res;
-}
-
 
 export{
     ColumnModel, ColumnCollection

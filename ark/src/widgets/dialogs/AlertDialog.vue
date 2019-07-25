@@ -1,5 +1,5 @@
 <template>
-    <div class="a-alert-dialog a-page-center" >
+    <div class="a-alert-dialog a-page-center" :style="{width:isMobile() ? '70%':'200px'}">
         <DragContainer>
             <div class="a-alert-dialog-container">
                 <div class="a-alert-title">{{this.option.title ? this.option.title:"提示"}}</div>
@@ -35,7 +35,6 @@ export default {
 
 <style>
 .a-alert-dialog{
-    width:70%;
 }
 
 .a-alert-dialog-container{

@@ -1,5 +1,5 @@
 <template>
-    <div class="a-form-dialog a-page-center">
+    <div class="a-form-dialog a-page-center" :style="{width:isMobile() ? '80%':'400px'}">
             <div class="a-form-dialog-container">
                 <div class="a-form-dialog-title">
                     {{option.metaData.title}}
@@ -87,7 +87,6 @@ export default {
 <style>
 
 .a-form-dialog{
-    width:80%;
     border-radius:5px;
     background-color:#fff;
     z-index:10000;

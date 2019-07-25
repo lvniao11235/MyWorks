@@ -1,5 +1,5 @@
 <template>
-    <div class="a-datetime-dialog a-page-center">
+    <div class="a-datetime-dialog a-page-center" :style="{width:isMobile() ? '70%':'200px'}">
         <DragContainer>
             <div class="a-datetime-dialog-container">
                 <div class="a-datetime-header">
@@ -185,7 +185,6 @@ export default {
 
 <style>
 .a-datetime-dialog{
-    width:70%;
     
 }
 
