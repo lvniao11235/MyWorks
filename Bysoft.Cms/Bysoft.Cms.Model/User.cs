@@ -11,8 +11,7 @@ namespace Bysoft.Cms.Model
     {
         [Key]
         public int Id { get; set; }
-
-        [Key]
+        
         public string Uid { get; set; }
 
         public string Name { get; set; }

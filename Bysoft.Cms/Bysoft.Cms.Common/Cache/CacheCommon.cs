@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bysoft.Cms.Infrastructure.EF
+namespace Bysoft.Cms.Common.Cache
 {
-    public class DbBase
+    public class CacheCommon
     {
-        public DataContext Context { get; set; }
     }
 }

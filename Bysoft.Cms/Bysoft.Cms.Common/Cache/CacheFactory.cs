@@ -8,5 +8,6 @@ namespace Bysoft.Cms.Common.Cache
 {
     public class CacheFactory
     {
+
     }
 }

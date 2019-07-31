@@ -8,5 +8,10 @@ namespace Bysoft.Cms.Common.Cache
 {
     public interface ICache
     {
+        T Get<T>(string key);
+
+        bool Set<T>(string key, T t);
+
+        bool Set<T>(string key, T t, long period);
     }
 }
