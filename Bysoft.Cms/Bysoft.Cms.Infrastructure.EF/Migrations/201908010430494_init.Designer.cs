@@ -13,7 +13,7 @@ namespace Bysoft.Cms.Infrastructure.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201907290435295_init"; }
+            get { return "201908010430494_init"; }
         }
         
         string IMigrationMetadata.Source

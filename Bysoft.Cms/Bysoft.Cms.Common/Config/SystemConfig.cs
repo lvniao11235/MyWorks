@@ -8,7 +8,7 @@ using System.Collections.Specialized;
 
 namespace Bysoft.Cms.Common
 {
-    class SystemConfig
+    public class SystemConfig
     {
         public static NameValueCollection AppSettings
         {

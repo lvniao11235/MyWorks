@@ -5,16 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Bysoft.Cms.Model;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Bysoft.Cms.Common;
+using System.Configuration;
 
 namespace Bysoft.Cms.Infrastructure.EF
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser>
     {
-        public DataContext() : base("name=db")
+        public DataContext() : base("bysoft")
         {
             
         }
 
-        public DbSet<User> Users { get; set; }
+        static DataContext()
+        {
+            Database.SetInitializer<DataContext>(new DataContextInit());
+        }
+
+        public static DataContext Create()
+        {
+            return new DataContext();
+        }
+
     }
 }

@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <connectionStrings>
-  <add name="db" connectionString="data source=BYS-JOE1\SQLSERVER;initial catalog=test;uid=sa;pwd=Pass1234"/>
+  <add name="bysoft" providerName="System.Data.SqlClient" connectionString="data source=172.18.12.11;initial catalog=test;uid=sa;pwd=Pass1234;Encrypt=False;TrustServerCertificate=False;  MultipleActiveResultSets=True;application name=EntityFramework" />
 </connectionStrings>

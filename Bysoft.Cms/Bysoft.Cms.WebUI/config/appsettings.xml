@@ -8,4 +8,5 @@
   <add key="redis_period" value="108000"/>
   <add key="redis_read_list" value=""/>
   <add key="redis_write_list" value=""/>
+  <add key="owin:AppStartup" value="Bysoft.Cms.UserCenter.IdentityConfig" />
 </appSettings>

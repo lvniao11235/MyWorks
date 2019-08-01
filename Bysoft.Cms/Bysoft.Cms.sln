@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bysoft.Cms.Common", "Bysoft
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bysoft.Cms.Infrastructure.EF", "Bysoft.Cms.Infrastructure.EF\Bysoft.Cms.Infrastructure.EF.csproj", "{34D089C9-1B95-4F58-9FAE-2297F94DA5FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bysoft.Cms.UserCenter", "Bysoft.Cms.UserCenter\Bysoft.Cms.UserCenter.csproj", "{9FD79B22-4D5C-4754-9769-F15809D3DD5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{34D089C9-1B95-4F58-9FAE-2297F94DA5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34D089C9-1B95-4F58-9FAE-2297F94DA5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34D089C9-1B95-4F58-9FAE-2297F94DA5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD79B22-4D5C-4754-9769-F15809D3DD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD79B22-4D5C-4754-9769-F15809D3DD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD79B22-4D5C-4754-9769-F15809D3DD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD79B22-4D5C-4754-9769-F15809D3DD5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{2AD0CA1C-F2BD-4882-A835-DD7844139A19} = {4CF2F9DD-2262-4A6A-9F29-D1C279849EDE}
 		{8AE91FBE-E857-4DA0-A738-7BCB07CE0631} = {3E73CBEB-4EB3-4919-AE7A-9F5DB5C1FA07}
 		{34D089C9-1B95-4F58-9FAE-2297F94DA5FF} = {B02A1C64-A4B2-4FA8-AD0D-479350C9BA17}
+		{9FD79B22-4D5C-4754-9769-F15809D3DD5E} = {6F80678F-A3F4-46B7-9411-CCB6D8B75E1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7106CFC9-DCAD-474C-86E1-53985C4F98EE}
