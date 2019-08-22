@@ -31,6 +31,7 @@ import PcLayout1 from '../pages/pc/Layout1';
 import PcLayout2 from '../pages/pc/Layout2';
 import PcLayout3 from '../pages/pc/Layout3';
 import PcLayout4 from '../pages/pc/Layout4';
+import PcLayout5 from '../pages/pc/Layout5';
 import PcTable1 from '../pages/pc/Table1';
 import PcDrag from '../pages/pc/Drag';
 Vue.use(VueRouter);
@@ -106,6 +107,8 @@ export default new VueRouter({
             path:'/pc/layout3', component:PcLayout3
         },{
             path:'/pc/layout4', component:PcLayout4
+        },{
+            path:'/pc/layout5', component:PcLayout5
         },{
             path:'/pc/drag', component:PcDrag
         },{

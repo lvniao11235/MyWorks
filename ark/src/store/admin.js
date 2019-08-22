@@ -20,6 +20,7 @@ export default{
                 {id:24, icon:"fa fa-th-large", text:"布局2", url:"/pc/layout2"},
                 {id:25, icon:"fa fa-th-large", text:"布局3", url:"/pc/layout3"},
                 {id:26, icon:"fa fa-th-large", text:"布局4", url:"/pc/layout4"},
+                {id:27, icon:"fa fa-th-large", text:"布局5", url:"/pc/layout5"},
             ]}, 
             {
                 id:2, icon:"fa fa-gears", text:"组件", items:[
